@@ -4,121 +4,94 @@ page {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-}
-
-.userinfo, .uploader, .tunnel {
-    margin-top: 40rpx;
-    height: 140rpx;
-    width: 100%;
-    background: #FFF;
-    border: 1px solid rgba(0, 0, 0, .1);
-    border-left: none;
-    border-right: none;
+    height: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    transition: all 300ms ease;
-}
-
-.userinfo-avatar {
-    width: 100rpx;
-    height: 100rpx;
-    margin: 20rpx;
-    border-radius: 50%;
-}
-
-.userinfo-nickname {
-    font-size: 32rpx;
-    color: #007AFF;
-}
-
-.uploader, .tunnel {
-    height: auto;
-    padding: 0 0 0 40rpx;
     flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
+    justify-content: flex-start;
+}
+.address{
+  width:100%;
+  background-color:#DF6448;
+  color:white;
+  display:flex;
+  justify-content:center;
+  height:80rpx;
+  font-size:30rpx;
+  line-height:80rpx;
 }
 
-.uploader-text, .tunnel-text {
-    width: 100%;
-    line-height: 52px;
-    font-size: 34rpx;
-    color: #007AFF;
+.boxY{
+  display: flex;
 }
 
-.uploader-container {
-    width: 100%;
-    height: 400rpx;
-    padding: 20rpx 20rpx 20rpx 0;
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+.orderBox{
+  background-color:#F6F6F6;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  height: 100%;
 }
 
-.uploader-image {
-    width: 100%;
-    height: 360rpx;
+.orderType{
+  font-size:26rpx;
+  padding:35rpx;
+  color:#7c7c7c;
 }
 
-.tunnel {
-    padding: 0 0 0 40rpx;
+.orderList{
+  border-top:solid 1rpx #ebebeb;
+  display:flex;
+  height: 100%;
 }
 
-.tunnel-text {
-    position: relative;
-    color: #222;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    box-sizing: border-box;
-    border-top: 1px solid rgba(0, 0, 0, .1);
+.navigation{
+  display:flex;
+  flex-direction:column;
+  border-right:solid #ebebeb 0.5rpx;
+  width:23%;
 }
 
-.tunnel-text:first-child {
-    border-top: none;
+.list{
+  width: 77%;
+}
+.foodClass{
+  font-size:28rpx;
+  padding:26rpx;
+  font-weight:900;
+  border-bottom:solid 1rpx #ebebeb;
 }
 
-.tunnel-switch {
-    position: absolute;
-    right: 20rpx;
-    top: -2rpx;
+.foodClassChoose{
+  color: #DF6448;
+  font-size:28rpx;
+  padding:26rpx;
+  font-weight:900;
+  border-bottom:solid 1rpx #ebebeb;
+  border-left:solid;
+  background-color: white;
 }
 
-.disable {
-    color: #888;
+.foodClassName{
+  font-size:27rpx;
+  padding:24rpx;
+  border-bottom:solid 1rpx #ebebeb;
 }
 
-.service {
-    position: fixed;
-    right: 40rpx;
-    bottom: 40rpx;
-    width: 140rpx;
-    height: 140rpx;
-    border-radius: 50%;
-    background: linear-gradient(#007AFF, #0063ce);
-    box-shadow: 0 5px 10px rgba(0, 0, 0, .3);
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    transition: all 300ms ease;
+.foodClassName{
+  font-size:27rpx;
+  padding:24rpx;
+  border-bottom:solid 1rpx #ebebeb;
 }
 
-.service-button {
-    position: absolute;
-    top: 40rpx;
+.foodBox{
+  background-color: white;
 }
 
-.service:active {
-    box-shadow: none;
+.food{
+  margin:0 0 0 29rpx;
+  border-bottom:solid 1rpx #ebebeb;
 }
 
-.request-text {
-    padding: 20rpx 0;
-    font-size: 24rpx;
-    line-height: 36rpx;
-    word-break: break-all;
+.foodImg{
+  width:80rpx;
 }

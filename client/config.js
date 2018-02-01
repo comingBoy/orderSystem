@@ -19,7 +19,9 @@ var config = {
 
         getFoodTypeListUrl: `${host}/weapp/getFoodTypeList`,
 
-        getgetShopInfoUrl: `${host}/weapp/getShopInfo`
+        getFoodListUrl: `${host}/weapp/getFoodList`,
+
+        getShopInfoUrl: `${host}/weapp/getShopInfo`
     }
 };
 

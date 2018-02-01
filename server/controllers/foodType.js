@@ -1,4 +1,4 @@
-const foodTypedb = require
+const foodTypedb = require('../db/foodTypedb.js')
 module.exports = {
   getFoodTypeList: async ctx => {
     let req = ctx.request.body

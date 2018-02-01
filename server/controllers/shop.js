@@ -1,4 +1,4 @@
-const foodTypedb = require
+const shopdb = require('../db/shopdb.js')
 module.exports = {
   getShopInfo: async ctx => {
     let req = ctx.request.body
@@ -7,7 +7,7 @@ module.exports = {
     let status = t == 'object' ? 1 : -1
     ctx.body = {
       status: status,
-      foodTypeList: res
+      shopInfo: res
     }
   }
 

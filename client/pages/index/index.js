@@ -18,8 +18,19 @@ Page({
             photo: "../../images/xiaomian.jpg",
             leastPrice: 14,
             remark: "汤面",
-            remainNum: -1,
-            spec: ["大碗", "小碗"],
+            priceProperty: {
+              spec: [
+                {
+                  name: "小碗",
+                  price: 14
+                },
+                {
+                  name: "大碗",
+                  price: 16,
+                }
+              ]
+            },
+            
             way: ["无麻辣", "微麻辣"],
             Taboos: ["少油"],
           },

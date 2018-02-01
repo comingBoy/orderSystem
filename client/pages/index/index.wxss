@@ -53,6 +53,7 @@ page {
 
 .list{
   width: 77%;
+  background-color:white;
 }
 .foodClass{
   font-size:28rpx;
@@ -81,6 +82,7 @@ page {
   font-size:27rpx;
   padding:24rpx;
   border-bottom:solid 1rpx #ebebeb;
+  background-color:#f6f6f6;
 }
 
 .foodBox{
@@ -88,10 +90,12 @@ page {
 }
 
 .food{
-  margin:0 0 0 29rpx;
+  margin:29rpx 0 0 29rpx;
   border-bottom:solid 1rpx #ebebeb;
+  display: flex;
 }
 
 .foodImg{
   width:80rpx;
+  height:80rpx;
 }

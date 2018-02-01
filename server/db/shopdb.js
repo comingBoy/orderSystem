@@ -2,14 +2,14 @@ var mysqlHelper = require("./mysqlHelper.js")
 
 module.exports = {
 
-  async getFoodList(args) {
-    let sql = 'SELECT * FROM foodTypedb where foodTypeId = ?'
-    let params = [args.foodTypeId]
+  async getShopInfo(args) {
+    let sql = 'SELECT * FROM shopdb where shopId = ?'
+    let params = [args.shopId]
     let result = await mysqlHelper.query(sql, params)
     return result
   },
 
- 
+
 
 
   /*

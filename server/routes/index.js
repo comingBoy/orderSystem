@@ -22,4 +22,7 @@ router.post('/upload', controllers.upload)
 
 router.post('/getFoodTypeList', controllers.food.getFoodTypeList)
 
+router.post('/getShopInfo', controllers.shop.getShopInfo)
+
+
 module.exports = router

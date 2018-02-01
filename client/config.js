@@ -15,7 +15,9 @@ var config = {
         loginUrl: `${host}/weapp/login`,
 
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
+        uploadUrl: `${host}/weapp/upload`,
+
+        getFoodTypeListUrl: `${host}/weapp/getFoodTypeList`
     }
 };
 

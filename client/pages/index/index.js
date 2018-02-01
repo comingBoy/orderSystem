@@ -1,5 +1,5 @@
 //index.js
-var food = require('../../utils/food.js')
+var foodType = require('../../utils/foodType.js')
 Page({
 
   /**

@@ -20,4 +20,6 @@ router.get('/user', validationMiddleware, controllers.user)
 // 图片上传接口，小程序端可以直接将 url 填入 wx.uploadFile 中
 router.post('/upload', controllers.upload)
 
+router.post('/getFoodTypeList', controllers.food.getFoodTypeList)
+
 module.exports = router

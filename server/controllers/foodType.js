@@ -19,7 +19,8 @@ module.exports = {
     let t = typeof (res)
     let status = t == 'object' ? 1 : -1
     ctx.body = {
-      status: status
+      status: status,
+    
       }
   }
 

@@ -15,10 +15,11 @@ Page({
 
   test: function () {
     var data = {
-      shopId: 1,
-      foodTypeName: '酒水',
+      shopId:1,
+      openTime: '5:00',
+      closeTime: '20:00',
     }
-    foodType.newFoodType(data, function (res) {
+    shop.changeShopTime(data, function (res) {
       console.log(res)
     })
   },

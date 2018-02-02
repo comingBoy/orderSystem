@@ -30,5 +30,6 @@ router.post('/newOrder', controllers.order.newOrder)
 
 router.post('/newFoodType', controllers.foodType.newFoodType)
 
+router.post('/changeShopTime', controllers.shop.changeShopTime)
 
 module.exports = router

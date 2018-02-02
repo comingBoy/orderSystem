@@ -10,6 +10,14 @@ module.exports = {
     return result
   },
 
+  //改变营业时间
+
+  async changeShopTime(args) {
+    let sql = 'UPDATE shopdb SET openTime = ?, closeTime = ? where shopId = ?'
+    let params = [args.openTime,args.closeTime,args.shopId]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
 
 
 

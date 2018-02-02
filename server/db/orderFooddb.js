@@ -17,4 +17,12 @@ module.exports = {
     let result = await mysqlHelper.query(sql, params)
     return result
   },
+
+  //获取订单具体菜品
+  async getOrderFood(args) {
+    let sql = 'SELECT * FROM orderFooddb WHERE orderId = ? and shopId = ? and date = ?'
+    let params = [args.orderId, args.shopId, args.date]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
 }

@@ -1,5 +1,7 @@
 const shopdb = require('../db/shopdb.js')
 module.exports = {
+
+  //获取店铺信息
   getShopInfo: async ctx => {
     let req = ctx.request.body
     let res = await shopdb.getShopInfo(req)

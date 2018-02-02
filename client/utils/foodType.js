@@ -1,10 +1,8 @@
 var net = require('./net.js')
 var config = require('../config.js')
 
-//获取食物清单
-
 module.exports = {
-  /*
+  /*获取菜品种类列表
   data = {
     shopId
   }

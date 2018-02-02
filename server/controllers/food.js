@@ -1,6 +1,8 @@
 const foodTypedb = require('../db/foodTypedb.js')
 const fooddb = require('../db/fooddb.js')
 module.exports = {
+
+  //获取菜品列表
   getFoodList: async ctx => {
     var req, req0, res, res0, t, t0, status
     var foodList = []

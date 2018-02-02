@@ -26,5 +26,7 @@ router.post('/getFoodList', controllers.food.getFoodList)
 
 router.post('/getShopInfo', controllers.shop.getShopInfo)
 
+router.post('/newOrder', controllers.order.newOrder)
+
 
 module.exports = router

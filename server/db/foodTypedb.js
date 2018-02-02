@@ -2,6 +2,7 @@ var mysqlHelper = require("./mysqlHelper.js")
 
 module.exports = {
 
+  //获取某店菜品种类列表
   async getFoodTypeList(args) {
     let sql = 'SELECT * FROM foodTypedb where shopId = ?'
     let params = [args.shopId]

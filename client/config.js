@@ -17,6 +17,8 @@ var config = {
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
 
+        
+        
         getFoodTypeListUrl: `${host}/weapp/getFoodTypeList`,
 
         getFoodListUrl: `${host}/weapp/getFoodList`,
@@ -25,12 +27,13 @@ var config = {
 
         newOrderUrl: `${host}/weapp/newOrder`,
 
-
         newFoodTypeUrl: `${host}/weapp/newFoodType`,
 
         changeShopTimeUrl: `${host}/weapp/changeShopTime`,
 
-        newFoodUrl: `${host}/weapp/newFood`
+        newFoodUrl: `${host}/weapp/newFood`,
+
+        getUnfinishOrderUrl: `${host}/weapp/getUnfinishOrder`,
 
 
 

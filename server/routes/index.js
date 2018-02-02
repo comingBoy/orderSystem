@@ -30,5 +30,7 @@ router.post('/newOrder', controllers.order.newOrder)
 
 router.post('/newFood', controllers.food.newFood)
 
+router.post('/newFoodType', controllers.foodType.newFoodType)
+
 
 module.exports = router

@@ -2,6 +2,8 @@
 var food = require('../../utils/food.js')
 var shop = require('../../utils/shop.js')
 var order = require('../../utils/order.js')
+var foodType = require('../../utils/foodType.js')
+
 Page({
 
   /**

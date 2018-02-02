@@ -25,7 +25,10 @@ var config = {
 
         newOrderUrl: `${host}/weapp/newOrder`,
 
-        newFoodUrl: `${host}/weapp/newFood`
+        newFoodUrl: `${host}/weapp/newFood`,
+
+        newFoodTypeUrl: `${host}/weapp/newFoodType`
+
     }
 };
 

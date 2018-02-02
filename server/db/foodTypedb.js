@@ -10,6 +10,12 @@ module.exports = {
     return result
   },
 
+  async newFoodType(args) {
+    let sql = 'INSERT INTO foodTypedb(shopId,foodTypeName) VALUE(?,?)'
+    let params = [args.shopId, args.foodTypeName]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
  
 
 

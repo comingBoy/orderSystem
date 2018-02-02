@@ -23,7 +23,9 @@ var config = {
 
         getShopInfoUrl: `${host}/weapp/getShopInfo`,
 
-        newOrderUrl: `${host}/weapp/newOrder`
+        newOrderUrl: `${host}/weapp/newOrder`,
+
+        newFoodTypeUrl: `${host}/weapp/newFoodType`
     }
 };
 

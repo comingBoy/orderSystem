@@ -11,5 +11,11 @@ module.exports = {
     net.request(data, config.service.getFoodTypeUrl, function (res) {
       callback(res)
     })
-  }
+  },
+
+   newFoodType: function (data, callback) {
+     net.request(data, config.service.newFoodTypeUrl, function (res) {
+       callback(res)
+     })
+   },
 }

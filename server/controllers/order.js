@@ -10,15 +10,10 @@ module.exports = {
   //提交订单
   newOrder: async ctx => {
     while (!canOrder) {
-      console.log("等待中。。。")
       pending = parseInt(1000 * Math.random())
       await sleep(pending)
     }
     canOrder = 0
-    console.log("正在提交订单。。。")
-    for (var i = 0; i < 3; i ++) {
-      await sleep(10000)
-    }
     var req, req0, res, res0, t, t0, status, pending
     req = ctx.request.body
     res = await orderdb.getLastOrder(req)

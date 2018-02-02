@@ -12,5 +12,25 @@ module.exports = {
     net.request(data, config.service.getFoodListUrl, function (res) {
       callback(res)
     })
+  },
+
+  /*上传菜品
+  data = {
+    shopId,
+    foodTypeId,
+    foodName,
+    leastPrice,
+    priceProperty,
+    multiProperty,
+    singleProperty,
+    foodPhoto,
+    remark,
+    ifSoldOut
   }
+  */
+  newFood: function (data, callback) {
+    net.request(data, config.service.newFoodUrl, function (res) {
+      callback(res)
+    })
+  },
 }

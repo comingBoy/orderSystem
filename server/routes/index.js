@@ -28,6 +28,8 @@ router.post('/getShopInfo', controllers.shop.getShopInfo)
 
 router.post('/newOrder', controllers.order.newOrder)
 
+router.post('/newFood', controllers.food.newFood)
+
 router.post('/newFoodType', controllers.foodType.newFoodType)
 
 router.post('/changeShopTime', controllers.shop.changeShopTime)

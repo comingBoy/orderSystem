@@ -10,4 +10,12 @@ module.exports = {
     return result
   },
 
+  //上传菜品
+  async newFood(args) {
+    let sql = 'INSERT INTO fooddb(shopId, foodTypeId, foodName, leastPrice, priceProperty, multiProperty, singleProperty, foodPhoto, remark, ifSoldOut) VALUE(?,?,?,?,?,?,?,?,?,?)'
+    let params = [args.shopId, args.foodTypeId, args.foodName, args.leastPrice, args.priceProperty, args.multiProperty, args.singleProperty, args.foodPhoto, args.remark, args.ifSoldOut]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
+
 }

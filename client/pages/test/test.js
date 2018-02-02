@@ -16,11 +16,11 @@ Page({
   test: function () {
     var data = {
       shopId:1,
-      openTime: '5:00',
-      closeTime: '20:00',
+      openTime: '6:00',
+      closeTime: '21:00',
     }
     shop.changeShopTime(data, function (res) {
-      console.log(res)
+    console.log(res)
     })
   },
 

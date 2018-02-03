@@ -32,5 +32,13 @@ module.exports = {
     let params = [args.shopId, args.date]
     let result = await mysqlHelper.query(sql, params)
     return result
-  },  
+  },
+
+  //完成订单
+  async finishOrder(args) {
+    let sql = 'UPDATE orderdb SET ifFinish = 1 where orderId = ?'
+    let params = [args.orderId]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
 }

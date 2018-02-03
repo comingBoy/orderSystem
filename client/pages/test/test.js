@@ -15,12 +15,10 @@ Page({
 
   test: function () {
     var data = {
-      shopId:1,
-      openTime: '6:00',
-      closeTime: '21:00',
+      orderId: 1
     }
-    shop.changeShopTime(data, function (res) {
-    console.log(res)
+    order.finishOrder(data, function (res) {
+      console.log(res)
     })
   },
 

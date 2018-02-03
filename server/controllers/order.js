@@ -61,5 +61,17 @@ module.exports = {
     ctx.body = {
       status: status
     }
-  }
+  },
+
+  //完成订单
+  finishOrder: async ctx => {
+    let req = ctx.request.body
+    let res = await orderdb.finishOrder(req)
+    let t = typeof (res)
+    let status = t == 'object' ? 1 : -1
+    
+    ctx.body = {
+      status: status
+    }
+  },
 }

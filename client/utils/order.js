@@ -28,5 +28,16 @@ module.exports = {
     net.request(data, config.service.newOrderUrl, function (res) {
       callback(res)
     })
+  },
+
+  /*完成订单
+  data = {
+    orderId
   }
+  */
+  finishOrder: function (data, callback) {
+    net.request(data, config.service.finishOrderUrl, function (res) {
+      callback(res)
+    })
+  },
 }

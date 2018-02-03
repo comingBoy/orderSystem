@@ -65,7 +65,8 @@ module.exports = {
 
   //获取未完成订单
   getUnfinishOrder: async ctx => {
-    var req, req0, res, res0, unfinishOrder,status
+    var req, req0, res, res0, status
+    var unfinishOrder = []
     req = ctx.request.body
     res = await orderdb.getUnfinishOrder(req)
     let t = typeof(res)
@@ -93,6 +94,8 @@ module.exports = {
     }else{
       status = -1
     }
+
+   
     ctx.body = {
       status: status,
       unfinishOrder: unfinishOrder

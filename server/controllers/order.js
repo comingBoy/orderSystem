@@ -65,23 +65,25 @@ module.exports = {
 
   //获取未完成订单
   getUnfinishOrder: async ctx => {
-    var req,req0,res,res0
+    var req, req0, res, res0, unfinishOrder,status
     req = ctx.request.body
     res = await orderdb.getUnfinishOrder(req)
     let t = typeof(res)
-    
     if(t == 'object' ){
       status = 1
       for(var i = 0; i < res.length;i++){
-        req0.shopId = res[i].shopId
-        req0.orderId = res[i].orderId
-        req0.date = res[i].date
+        req0={
+        shopId : res[i].shopId,
+        orderId : res[i].orderId,
+        date : res[i].date
+        }
+        
         res0 = await orderFooddb.getOrderFood(req0)
         let t0=typeof(res0)
         if(t0 == 'object'){
           unfinishOrder[i] = {
-            order:res[i],
-            orderFood:res0
+          order:res[i],
+          orderFood:res0
           }
         }else{
           status = -1
@@ -91,7 +93,6 @@ module.exports = {
     }else{
       status = -1
     }
-    
     ctx.body = {
       status: status,
       unfinishOrder: unfinishOrder

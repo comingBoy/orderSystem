@@ -15,11 +15,10 @@ Page({
 
   test: function () {
     var data = {
-      shopId:1,
-      openTime: '6:00',
-      closeTime: '21:00',
-    }
-    shop.changeShopTime(data, function (res) {
+      shopId: 1,
+      date: '2018-01-27',
+      }
+    order.getUnfinishOrder(data, function (res) {
     console.log(res)
     })
   },

@@ -41,4 +41,12 @@ module.exports = {
     let result = await mysqlHelper.query(sql, params)
     return result
   },
+
+  //获取未完成订单
+  async getUnfinishOrder(args) {
+    let sql = 'SELECT * FROM orderdb where ifFinish = 0 and shopId = ? and date = ? '
+    let params = [args.shopId,args.date] 
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
 }

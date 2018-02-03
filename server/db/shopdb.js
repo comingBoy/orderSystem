@@ -11,7 +11,7 @@ module.exports = {
   },
 
 
-
+//修改营业时间
   async changeShopTime(args) {
     let sql = 'UPDATE shopdb SET openTime = ?, closeTime = ? where shopId = ?'
     let params = [args.openTime,args.closeTime,args.shopId]

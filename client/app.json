@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/test/test",
-    "pages/index/index"
+    "pages/eatHereOrder/eatHereOrder",
+    "pages/index/index",
+    "pages/test/test"
   ],
   "window":{
     "backgroundColor":"#000",

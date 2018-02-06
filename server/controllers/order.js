@@ -14,7 +14,7 @@ module.exports = {
       await sleep(pending)
     }
     canOrder = 0
-    var req, req0, res, res0, t, t0, status, pending
+    var req, req0, res, res0, t, t0, status, pending, orderId
     req = ctx.request.body
     res = await orderdb.getLastOrder(req)
     t = typeof (res)
@@ -26,6 +26,7 @@ module.exports = {
     } else {
       status = -1
     }
+    orderId = req.orderId
     if (status != -1) {
       res = await orderdb.newOrder(req)
       t = typeof (res)
@@ -59,7 +60,8 @@ module.exports = {
     canOrder = 1
 
     ctx.body = {
-      status: status
+      status: status,
+      orderId: orderId
     }
   },
 

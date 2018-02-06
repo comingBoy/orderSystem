@@ -1,0 +1,35 @@
+<!--pages/eatHereOrder/eatHereOrder.wxml-->
+
+<view class='container'>
+  <view class='confirmOrder'>
+    <view class='confirmOrder0'>确认订单：</view>
+  </view>
+  <view class='orderDetail'>
+    <view class='detail'>
+      <view class='property'>门店</view>
+      <view class='context'>{{order.shopName}}</view>
+    </view>
+    <view class='detail'>
+      <view class='property'>日期时段</view>
+      <view class='context'>{{order.period}}</view>
+    </view>
+    <view class='detail'>
+      <view class='property'>取餐方式</view>
+      <view class='context'>{{order.getFood}}</view>
+    </view>
+    <view class='detail' wx:for='{{order.orderFood}}'>
+      <view class='food'>
+        {{item.foodName}} X {{item.foodNum}}
+      </view>
+      <view class='price'>
+        <view class='symbol'>¥</view>
+        {{item.singlePrice * item.foodNum}}
+      </view>
+    </view>
+    <view class='modifyOrder'>
+      <image src='../../images/gouwuche.png' class='shoppingCar' mode='aspectFit'></image>
+      修改订单
+    </view>
+  </view>
+  <button class='submit' bindtap='submit'>前往支付</button>
+</view>

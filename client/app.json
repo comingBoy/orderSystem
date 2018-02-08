@@ -3,9 +3,9 @@
     "pages/index/index"
   ],
   "window":{
-    "backgroundColor":"#000",
+    "backgroundColor":"#393A3F",
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#000",
+    "navigationBarBackgroundColor": "#393A3F",
     "navigationBarTitleText": "老太婆摊摊面-点单",
     "navigationBarTextStyle":"white"
   }

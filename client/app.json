@@ -2,7 +2,8 @@
   "pages":[
     "pages/eatHereOrder/eatHereOrder",
     "pages/index/index",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/paySuccess/paySuccess"
   ],
   "window":{
     "backgroundColor":"#000",

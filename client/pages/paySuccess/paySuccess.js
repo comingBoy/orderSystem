@@ -1,44 +1,11 @@
-// pages/eatHereOrder/eatHereOrder.js
+// pages/paySuccess/paySuccess.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    getFoodList: ["打包自取", "堂食", "打包配送"],
-    address: '广州市番禺区兴业大道东855号',
-    order: {
-      shopName:'佛系青蛙暨大店',
-      period: '2月6日（周二） 晚餐',
-      ifEatHere: 1,
-      cost: 76,
-      orderFood: [
-        {
-          foodName: '小面',
-          foodNum: 2,
-          singlePrice: 14,
-          foodProperty: '小份,中麻,中辣'
-        }, {
-          foodName: '摊摊面',
-          foodNum: 3,
-          singlePrice: 16,
-          foodProperty: '大份,中麻,中辣'
-        }
-      ]
-    }
-  },
-
-  modifyOrder: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
-
-  submit: function () {
-    //支付接口
-    wx.navigateTo({
-      url: '../paySuccess/paySuccess',
-    })
+  
   },
 
   /**

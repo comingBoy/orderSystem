@@ -1,4 +1,13 @@
 /* pages/eatHereOrder/eatHereOrder.wxss */
+.order{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #F2F2F2
+}
+
 .confirmOrder{
   display:flex;
   flex-direction:column;
@@ -25,6 +34,7 @@
   font-size:30rpx;
   align-items:center;
   border-bottom:solid 2rpx #ebebeb;
+  background-color: #ffffff
 }
 
 .detail{
@@ -33,15 +43,31 @@
   justify-content:space-between;
   width:90%;
   margin-top: 5rpx;
+  border-bottom:solid 2rpx #ebebeb;
 }
 
 .property{
   color: #888888
 }
 
+.context{
+  width: 40%;
+}
+
 .food{
   display: flex;
   padding-left: 30rpx;
+}
+
+.food0{
+  display: flex;
+  flex-direction: column
+}
+
+.foodProperty{
+  display: flex;
+  padding-left: 60rpx;
+  color: #888888;
 }
 
 .price{

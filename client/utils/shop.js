@@ -1,8 +1,6 @@
 var net = require('./net.js')
 var config = require('../config.js')
 
-//获取食物清单
-
 module.exports = {
   /*
   data = {

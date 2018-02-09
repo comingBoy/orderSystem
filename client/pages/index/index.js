@@ -209,22 +209,28 @@ Page({
             var str = foodList[i].thisTypeFoodList[j].priceProperty
             foodList[i].thisTypeFoodList[j].priceProperty = new Array()
             foodList[i].thisTypeFoodList[j].priceProperty = that.getProperty(str)
+          } else {
+            foodList[i].thisTypeFoodList[j].priceProperty = []
           }
           if (foodList[i].thisTypeFoodList[j].singleProperty != null && foodList[i].thisTypeFoodList[j].singleProperty != "") {
             foodList[i].thisTypeFoodList[j].hasProperty = true
             var str = foodList[i].thisTypeFoodList[j].singleProperty
             foodList[i].thisTypeFoodList[j].singleProperty = new Array()
             foodList[i].thisTypeFoodList[j].singleProperty = that.getProperty(str)
+          } else {
+            foodList[i].thisTypeFoodList[j].singleProperty = []
           }
           if (foodList[i].thisTypeFoodList[j].multiProperty != null && foodList[i].thisTypeFoodList[j].multiProperty != "") {
             foodList[i].thisTypeFoodList[j].hasProperty = true
             var str = foodList[i].thisTypeFoodList[j].multiProperty
             foodList[i].thisTypeFoodList[j].multiProperty = new Array()
             foodList[i].thisTypeFoodList[j].multiProperty = that.getProperty(str)
+          } else {
+            foodList[i].thisTypeFoodList[j].multiProperty = []
           }
         }
       }
-      console.log(foodList)
+
       for (var i=0; i<foodList.length; i++) {
         foodList[i]['className'] = foodList[i]['foodTypeName']
         foodList[i]['classID'] = foodList[i]['foodTypeId']
@@ -233,17 +239,19 @@ Page({
         delete foodList[i]['foodTypeId']
         delete foodList[i]['thisTypeFoodList']
         for (var j=0; j<foodList[i].list.length; j++) {
+          foodList[i].list[j].orderList = new Array()
           foodList[i].list[j]['name'] = foodList[i].list[j]['foodName']
           foodList[i].list[j]['photo'] = foodList[i].list[j]['foodPhoto']
           foodList[i].list[j]['sellOut'] = foodList[i].list[j]['ifSoldOut']
           foodList[i].list[j]['sellOut'] = foodList[i].list[j]['sellOut'] == 1 ? true : false
+          foodList[i].list[j]['mulProperty'] = foodList[i].list[j]['multiProperty']
           delete foodList[i].list[j]['foodName']
           delete foodList[i].list[j]['foodPhoto']
           delete foodList[i].list[j]['ifSoldOut']
+          delete foodList[i].list[j]['multiProperty']
         }
       }
       console.log(foodList)
-      //赋值给data里foodList
       
       that.setData({
         foodList: foodList

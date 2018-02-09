@@ -225,6 +225,9 @@ Page({
             var str = foodList[i].thisTypeFoodList[j].multiProperty
             foodList[i].thisTypeFoodList[j].multiProperty = new Array()
             foodList[i].thisTypeFoodList[j].multiProperty = that.getProperty(str)
+            for (var k = 0; k < foodList[i].thisTypeFoodList[j].multiProperty.length; k++) {
+              foodList[i].thisTypeFoodList[j].multiProperty[k].required = false
+            }
           } else {
             foodList[i].thisTypeFoodList[j].multiProperty = []
           }
@@ -270,7 +273,7 @@ Page({
         len++
         property[len] = new Object()
         property[len].propertyList = new Array()
-        property[len].properName = e.substring(index,i)
+        property[len].propertyName = e.substring(index,i)
         property[len].required = true,
         property[len].beChoosed = false
         property[len].isMul = false

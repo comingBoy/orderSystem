@@ -1,4 +1,5 @@
 //index.js
+var food = require('../../utils/food.js')
 var foodType = require('../../utils/foodType.js')
 Page({
 
@@ -193,11 +194,100 @@ Page({
     finishModifyProperty: true,
   },
 
+  refresh: function (e) {
+    var that = this
+    var data = {
+      shopId: e
+    }
+    food.getFoodList(data, function (res) {
+      var foodList = res.data.foodList
+      for(var i=0; i<foodList.length; i++) {
+        for(var j=0; j<foodList[i].thisTypeFoodList.length; j++) {
+          foodList[i].thisTypeFoodList[j].hasProperty = false
+          if (foodList[i].thisTypeFoodList[j].priceProperty != null && foodList[i].thisTypeFoodList[j].priceProperty != "") {
+            foodList[i].thisTypeFoodList[j].hasProperty = true
+            var str = foodList[i].thisTypeFoodList[j].priceProperty
+            foodList[i].thisTypeFoodList[j].priceProperty = new Array()
+            foodList[i].thisTypeFoodList[j].priceProperty = that.getProperty(str)
+          }
+          if (foodList[i].thisTypeFoodList[j].singleProperty != null && foodList[i].thisTypeFoodList[j].singleProperty != "") {
+            foodList[i].thisTypeFoodList[j].hasProperty = true
+            var str = foodList[i].thisTypeFoodList[j].singleProperty
+            foodList[i].thisTypeFoodList[j].singleProperty = new Array()
+            foodList[i].thisTypeFoodList[j].singleProperty = that.getProperty(str)
+          }
+          if (foodList[i].thisTypeFoodList[j].multiProperty != null && foodList[i].thisTypeFoodList[j].multiProperty != "") {
+            foodList[i].thisTypeFoodList[j].hasProperty = true
+            var str = foodList[i].thisTypeFoodList[j].multiProperty
+            foodList[i].thisTypeFoodList[j].multiProperty = new Array()
+            foodList[i].thisTypeFoodList[j].multiProperty = that.getProperty(str)
+          }
+        }
+      }
+      console.log(foodList)
+      //赋值给data里foodList
+      /*
+      that.setData({
+        foodList: foodList
+      })
+      */
+    })
+  },
+
+  //将属性转换为对象
+  getProperty: function (e) {
+    var property = new Array()
+    var index = 0, len = -1, num = -1, price
+    for(var i=0; i<e.length; i++) {
+      if(e[i] == ":") {
+        num = -1
+        len++
+        property[len] = new Object()
+        property[len].propertyList = new Array()
+        property[len].properName = e.substring(index,i)
+        property[len].required = true,
+        property[len].beChoosed = false
+        property[len].isMul = false
+        index = i+1
+      }
+      if(e[i] == "(") {
+        num++
+        property[len].propertyList[num] = new Object()
+        property[len].propertyList[num].name = e.substring(index, i)
+        property[len].propertyList[num].beChoosed = false
+        index = i+1
+      }
+      if(e[i] == ")") {
+        property[len].propertyList[num].price = parseInt(e.substring(index, i))
+        index = i+1
+      }
+      if(e[i] == "," && e[i-1] != ")"){
+        num++
+        property[len].propertyList[num] = new Object()
+        property[len].propertyList[num].name = e.substring(index, i)
+        property[len].propertyList[num].beChoosed = false
+        index = i+1
+      } else if (e[i] == "," && e[i-1] == ")") {
+        index = i+1
+      }
+      if (e[i] == ";" && e[i-1] != ")"){
+        num++
+        property[len].propertyList[num] = new Object()
+        property[len].propertyList[num].name = e.substring(index, i)
+        property[len].propertyList[num].beChoosed = false
+        index = i+1
+      } else if(e[i] == ";" && e[i-1] == ")"){
+        index = i+1
+      }
+    }
+    return property
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
@@ -211,7 +301,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    
+    var shopId = 1
+    this.refresh(shopId)
   },
 
   /**

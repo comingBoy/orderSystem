@@ -1,7 +1,7 @@
 {
   "pages":[
-    "pages/eatHereOrder/eatHereOrder",
     "pages/index/index",
+    "pages/eatHereOrder/eatHereOrder",
     "pages/test/test",
     "pages/paySuccess/paySuccess"
   ],

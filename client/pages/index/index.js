@@ -236,7 +236,7 @@ Page({
 
       for (var i=0; i<foodList.length; i++) {
         foodList[i]['className'] = foodList[i]['foodTypeName']
-        foodList[i]['classID'] = foodList[i]['foodTypeId']
+        foodList[i]['classID'] = 'class' + foodList[i]['foodTypeId']
         foodList[i]['list'] = foodList[i]['thisTypeFoodList']
         delete foodList[i]['foodTypeName']
         delete foodList[i]['foodTypeId']

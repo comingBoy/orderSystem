@@ -16,27 +16,31 @@ module.exports = {
     canOrder = 0
     var req, req0, res, res0, t, t0, status, pending, orderId
     req = ctx.request.body
-    res = await orderdb.getLastOrder(req)
+    res = await orderdb.getLastOrder(req.order)
     t = typeof (res)
     status = 1
     if (t == 'object' && res.length > 0) {
-      req.orderId = res[0].orderId + 1
+      req.order.orderId = res[0].orderId + 1
     } else if (t == 'object' && res.length == 0) {
-      req.orderId = 1
+      req.order.orderId = 1
     } else {
       status = -1
     }
-    orderId = req.orderId
+    orderId = req.order.orderId
     if (status != -1) {
-      res = await orderdb.newOrder(req)
+      console.log(req.order)
+      res = await orderdb.newOrder(req.order)
+      console.log(res)
       t = typeof (res)
       if (t == 'object') {
-        for (var i = 0; i < req.orderFood.length; i++) {
-          req0 = req.orderFood[i]
-          req0.shopId = req.shopId
-          req0.orderId = req.orderId
-          req0.date = req.date
+        for (var i = 0; i < req.order.orderFood.length; i++) {
+          req0 = req.order.orderFood[i]
+          req0.shopId = req.order.shopId
+          req0.orderId = req.order.orderId
+          req0.date = req.order.date
+          console.log(req0)
           res0 = await orderFooddb.newOrderFood(req0)
+          console.log(res0)
           t0 = typeof (res0)
           if (t0 != 'object') {
             res = await orderdb.delOrder(req0)
@@ -108,11 +112,44 @@ module.exports = {
     }else{
       status = -1
     }
-
-   
+ 
     ctx.body = {
       status: status,
       unfinishOrder: unfinishOrder
+    }
+  },
+
+  //获取我的订单
+  getMyOrder: async ctx => {
+    var req, req0, res, res0, t, t0, status
+    var myOrder = new Array()
+    req = ctx.request.body
+    res = await orderdb.getMyOrder(req)
+    t = typeof (res)
+    if (t == 'object' && res.length > 0) {
+      status = 1
+      for (var i = 0; i < res.length; i++) {
+        myOrder[i] = new Object()
+        myOrder[i]=res[i]
+        res0 = await orderFooddb.getOrderFood(res[i])
+        t0 = typeof (res0)
+        if (t0 == 'object') {
+          myOrder[i].orderFood = new Array()
+          myOrder[i].orderFood = res0
+        } else {
+          status = -1
+          break
+        }
+      }
+    } else if (t == 'object' && res.length == 0) {
+      status = 0
+    } else {
+      status = -1
+    }
+
+    ctx.body = {
+      status: status,
+      myOrder: myOrder
     }
   },
 }

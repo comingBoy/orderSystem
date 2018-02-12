@@ -10,7 +10,7 @@ module.exports = {
   */
   getFoodList: function (data, callback) {
     net.request(data, config.service.getFoodListUrl, function (res) {
-      callback(res)
+      callback(res.data)
     })
   },
 
@@ -30,7 +30,7 @@ module.exports = {
   */
   newFood: function (data, callback) {
     net.request(data, config.service.newFoodUrl, function (res) {
-      callback(res)
+      callback(res.data)
     })
   },
 }

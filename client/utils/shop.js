@@ -9,13 +9,13 @@ module.exports = {
   */
   getShopInfo: function (data, callback) {
     net.request(data, config.service.getShopInfoUrl, function (res) {
-      callback(res)
+      callback(res.data)
     })
   },
 
   changeShopTime: function (data, callback) {
     net.request(data, config.service.changeShopTimeUrl, function (res) {
-      callback(res)
+      callback(res.data)
     })
   }
 }

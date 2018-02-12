@@ -1,38 +1,29 @@
-// pages/paySuccess/paySuccess.js
-var order = require('../../utils/order.js')
+// pages/login/login.js
+var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+var config = require('../../config.js')
+var login = require('../../utils/login.js')
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderId: 1,
-    status: ''
-  },
-
-  getMyOrder: function () {
-    wx.redirectTo({
-      url: '../myOrder/myOrder',
-    })
+  
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    var data = {
-      order: getApp().globalData.order
-    }
-    wx.showLoading({
-      title: '支付中，请稍后',
-    })
-    order.newOrder(data, function (res) {
-      that.setData({
-        orderId: res.orderId,
-        status: res.status
-      })
-      wx.hideLoading()
+    qcloud.setLoginUrl(config.service.loginUrl)
+    login.login(function (res) {
+      if (res.status == 1) {
+        getApp().globalData.userInfo = res.userInfo
+        wx.redirectTo({
+          url: '../eatHereOrder/eatHereOrder',
+        })
+      }
     })
   },
 

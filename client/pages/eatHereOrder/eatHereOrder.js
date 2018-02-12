@@ -15,12 +15,12 @@ Page({
       orderFood: [
         {
           foodName: '小面',
-          foodNum: 2,
+          orderNum: 2,
           singlePrice: 14,
           foodProperty: '小份,中麻,中辣'
         }, {
           foodName: '摊摊面',
-          foodNum: 3,
+          orderNum: 3,
           singlePrice: 16,
           foodProperty: '大份,中麻,中辣'
         }
@@ -35,6 +35,32 @@ Page({
   },
 
   submit: function () {
+    getApp().globalData.order = {
+      openId: "objYV0feu9WbSIydHi5LrNlStxlw",
+      shopId: 1,
+      tableId: 1,
+      cost: 76,
+      date: '2018-02-12',
+      time:'21:18',
+      ifEatHere: 1,
+      ifFinish: 0,
+      orderFood:[
+        {
+          foodId: 1,
+          foodName: "小面",
+          singlePrice: 14,
+          orderNum: 2,
+          foodProperty: '小份,中麻,中辣',
+        },{
+          foodId: 2,
+          foodName: '摊摊面',
+          foodNum: 3,
+          singlePrice: 16,
+          orderNum: 3,
+          foodProperty: '大份,中麻,中辣',
+        }
+      ]
+    }
     //支付接口
     wx.navigateTo({
       url: '../paySuccess/paySuccess',

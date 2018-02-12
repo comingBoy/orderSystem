@@ -9,13 +9,13 @@ module.exports = {
   */
    getFoodTypeList: function(data, callback) {
     net.request(data, config.service.getFoodTypeUrl, function (res) {
-      callback(res)
+      callback(res.data)
     })
   },
 
    newFoodType: function (data, callback) {
      net.request(data, config.service.newFoodTypeUrl, function (res) {
-       callback(res)
+       callback(res.data)
      })
    },
 }

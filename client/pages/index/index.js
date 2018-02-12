@@ -254,12 +254,11 @@ Page({
           delete foodList[i].list[j]['multiProperty']
         }
       }
-      console.log(foodList)
       
       that.setData({
         foodList: foodList
       })
-      
+      wx.hideLoading()
     })
   },
 
@@ -316,10 +315,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var obj = { key: '值' };
-    obj['abc'] = obj['key'];
-    delete obj['key'];
-    console.log(obj);
+    var shopId = 1
+    wx.showLoading({
+      title: '读取中，请稍后',
+    })
+    this.refresh(shopId)
+    wx.hideLoading()
   },
 
   /**

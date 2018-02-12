@@ -14,7 +14,7 @@ page {
   display:flex;
   justify-content:center;
   height:7%;
-  font-size:30rpx;
+  font-size:35rpx;
   line-height:80rpx;
 }
 
@@ -48,7 +48,7 @@ page {
 }
 
 .orderType {
-  font-size: 26rpx;
+  font-size: 30rpx;
   padding: 2%;
   height: 4%;
   color: #7c7c7c;
@@ -75,14 +75,14 @@ page {
 
 .foodClass {
   font-size: 28rpx;
-  padding: 26rpx;
+  padding: 30rpx;
   font-weight: 900;
   border-bottom: solid 1rpx #ebebeb;
 }
 
 .foodClassChoose {
   color: #df6448;
-  font-size: 28rpx;
+  font-size: 30rpx;
   padding: 26rpx;
   font-weight: 900;
   border-bottom: solid 1rpx #ebebeb;
@@ -91,7 +91,7 @@ page {
 }
 
 .foodClassName {
-  font-size: 27rpx;
+  font-size: 30rpx;
   padding: 24rpx;
   border-bottom: solid 1rpx #ebebeb;
 }
@@ -117,7 +117,7 @@ page {
 
 .tableNum {
   color: #000;
-  font-size: 28rpx;
+  font-size: 35rpx;
   font-weight: 900;
   border-bottom: solid 1rpx #ebebeb;
   width: 100%;
@@ -142,7 +142,7 @@ page {
 }
 
 .foodRemark {
-  font-size: 20rpx;
+  font-size: 25rpx;
   color: #7c7c7c;
   font-weight: 500;
   letter-spacing: 3rpx;
@@ -150,7 +150,7 @@ page {
 
 .foodPrice {
   color: #df6448;
-  font-size: 28rpx;
+  font-size: 30rpx;
   font-weight: 700;
 }
 
@@ -200,7 +200,7 @@ page {
 }
 
 .button {
-  width: 33%;
+  width: 31%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -237,6 +237,7 @@ page {
   width: 100%;
   border-top: solid 1rpx #e6e6e6;
   display: flex;
+  z-index: 1001;
 }
 
 .mask {
@@ -266,6 +267,9 @@ page {
 
 .goodsNum {
   width: 20%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .allPrice {
@@ -288,15 +292,11 @@ page {
 .shoppingCartImg {
   width: 70rpx;
   height: 70rpx;
-  position: relative;
-  top: 54rpx;
-  left: 33rpx;
 }
 
 .showGoodsNum {
-  position: absolute;
-  left: 91rpx;
-  bottom: 76rpx;
+  position: relative;
+  top: -24rpx;
   color: white;
   background-color: #df6448;
   padding: 0rpx;
@@ -360,7 +360,7 @@ page {
 }
 
 .propertyBox {
-  padding: 20rpx 0 20rpx 40rpx;
+  padding: 0 0 0 40rpx;
 }
 
 .propertyName {
@@ -463,4 +463,50 @@ page {
 
 .toChagneProperty {
   margin-right: 29rpx;
+}
+
+.property{
+  padding: 20rpx 0;
+}
+
+.shoppingCartDetail{
+  background-color:white;
+  position:absolute;
+  bottom:10%;
+  width:100%;
+  z-index: 1001;
+}
+
+.goodsDetail{
+
+}
+
+.goodsInfo{
+  display: flex;
+  height: 120rpx;
+  justify-content: space-around;
+  align-items: center;
+  font-size:35rpx;
+  font-weight:600;
+}
+
+.goodsName{
+  display:flex;
+  font-size:35rpx;
+  font-weight:600;
+}
+
+.goodsPrice{
+  color:#df6448;
+}
+
+.goodsNumButtom{
+  display: flex;
+}
+
+.goodsProperty{
+  padding:0 0 10rpx 80rpx;
+  color:#9F9F9F;
+  font-weight:400;
+  font-size:32rpx;
 }

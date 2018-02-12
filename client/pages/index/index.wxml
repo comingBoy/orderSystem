@@ -83,19 +83,19 @@
 
               <!--不需要选择属性-->
               <view class='button' wx:else>
-                <view class='delButton' hidden='true'>
+                <view class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
                   -
                 </view>
-                <text class='foodNum' hidden='true'>
-                  2
-                </text>
-                <view class='addButton'>
+                <view class='foodNum' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}'>
+                  {{food.orderList[0].num}}
+                </view>
+                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
                   +
                 </view>
               </view>
             </view>
             <!--显示订单信息,当存在属性选择的时候并且该物品在订单中才会显示-->
-            <view wx:if='{{food.orderList.length > 0}}'>
+            <view wx:if='{{food.orderList.length > 0 && food.hasProperty == true}}'>
               <view wx:for='{{food.orderList}}' wx:for-item='order' hidden='{{order.num <= 0}}' wx:for-index='orderIndex' class='orderInfoBox'>
                 <view class='orderInfo'>
                   <view class='foodNameInOrderInfo'>
@@ -105,7 +105,7 @@
                     ¥{{order.price}}
                   </view>
                 </view>
-                <view class='orderProperty' bindtap='modifyProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
+                <view class='orderProperty' bindtap='modifyProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' wx:if='{{order.propertyString.length != 0}}'>
                   <view>
                     {{order.propertyString}}
                   </view>
@@ -114,7 +114,7 @@
                   </view>
                 </view>
                 <view class='addDelButton'>
-                  <view class='delButton' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
+                  <view class='delButton' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
                     -
                   </view>
                   <view class='foodNum'>
@@ -136,7 +136,7 @@
   <!--购物车-->
   <view class='shoppingCart' hidden='{{shoppingCart.length == 0 || allNum == 0 || allPrice == 0}}'>
     <!--购物车数量，点击可查看购物车详情-->
-    <view class='goodsNum'>
+    <view class='goodsNum' bindtap='showShoppingCartDetail' data-status='open'>
       <!--购物车图片-->
       <image src='../../images/shoppingCart.png' class='shoppingCartImg'>
       </image>
@@ -156,6 +156,47 @@
     </view>
   </view>
 
+  <!--购物车的详情-->
+  <view class='shoppingCartDetailBox'>
+    <view class='mask' bindtap='showShoppingCartDetail' data-status='close' hidden='{{hiddenShoppingCartDetail}}'>
+    </view>
+    <view class='shoppingCartDetail' hidden='{{hiddenShoppingCartDetail}}' animation='{{animationData}}'>
+      <view wx:if='{{shoppingCartNum <= 4}}'>
+        <view class='goodsDetail' wx:for='{{shoppingCart}}' wx:if='{{item.num != 0}}'>
+          <view class='goodsInfo'>
+            <view class='goodsName'>
+              <view class='goodsNameInfo'>
+                {{item.foodName}}
+              </view>
+              <view class='goodsPricePorperty' wx:if='{{item.pricePropertyString.length != 0}}'>
+                ({{item.pricePropertyString}})
+              </view>
+            </view>
+            <view class='goodsPrice'>
+              ¥{{item.num*item.price}}
+            </view>
+            <view class='goodsNumButtom'>
+              <view class='delButton' bindtap='modifyFoodNum' data-src='del' data-index='{{index}}' data-from='shoppingCart'>
+                  -
+                </view>
+                <view class='foodNum'>
+                  {{item.num}}
+                </view>
+                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-index='{{index}}' data-from='shoppingCart'>
+                  +
+                </view>
+            </view>
+          </view>
+          <view class='goodsProperty'>
+            {{item.propertyString}}
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+      </view>
+      
+    </view>
+  </view>
 </view>
 
 <!--选择属性框-->
@@ -297,3 +338,4 @@
     </view>
   </view>
 </view>
+

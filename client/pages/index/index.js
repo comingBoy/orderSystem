@@ -12,6 +12,7 @@ Page({
     foodIndex: null,
     chooseProperty: true,
     modifyProperty: true,
+    hiddenShoppingCartDetail: true,
     imagesList: ['../../images/xiaomian.jpg',
       '../../images/tantanmian.jpg',
     ],
@@ -187,6 +188,7 @@ Page({
     shoppingCart: [
 
     ],
+    shoppingCartNum: 0,
     allPrice: 0,
     allNum: 0,
     orderFood: null,
@@ -334,8 +336,8 @@ Page({
    */
   onShow: function () {
     //传入shopId
-    var shopId = 1
-    this.refresh(shopId)
+    //var shopId = 1
+    //this.refresh(shopId)
   },
 
   /**
@@ -567,6 +569,10 @@ Page({
       mulProperty: [],
       propertyString: "",
       price: chooseFoodInfo.price,
+      pricePropertyString: "",
+      foodIndex: foodIndex,
+      foodListIndex: foodListIndex,
+      orderListIndex: 0,
     }
     for (var i = 0; i < chooseFoodInfo.priceProperty.length; i++) {
       for (var j = 0; j < chooseFoodInfo.priceProperty[i].propertyList.length; j++) {
@@ -594,6 +600,8 @@ Page({
       foodOrder.orderID = item.orderID
       foodOrder.num = item.num
       foodOrder.propertyString = item.propertyString
+      foodOrder.pricePropertyString = item.pricePropertyString
+      foodOrder.orderListIndex = item.orderListIndex
       if (JSON.stringify(item) == JSON.stringify(foodOrder)) {
         item.num++
         shoppingCart[item.orderID].num++
@@ -611,6 +619,8 @@ Page({
     }
     //购物车中没有时的操作
     foodOrder.orderID = shoppingCart.length
+    var shoppingCartNum = this.data.shoppingCartNum
+    shoppingCartNum ++
     if (foodOrder.singleProperty.length != 0) {
       foodOrder.propertyString = foodOrder.singleProperty.join(",")
       if (foodOrder.mulProperty.length != 0)
@@ -618,8 +628,11 @@ Page({
     } else if (foodOrder.mulProperty.length != 0) {
       foodOrder.propertyString = foodOrder.mulProperty.join(",")
     }
-
+    if(foodOrder.priceProperty.length != 0){
+      foodOrder.pricePropertyString = foodOrder.priceProperty.join(",")
+    }
     foodOrder.num = 1
+    foodOrder.orderListIndex = foodList[foodListIndex].list[foodIndex].orderList.length
     foodList[foodListIndex].list[foodIndex].orderList.push(foodOrder)
     shoppingCart.push(foodOrder)
     this.setData({
@@ -629,44 +642,140 @@ Page({
       finishChooseProperty: false,
       allNum: allNum,
       allPrice: allPrice,
+      shoppingCartNum: shoppingCartNum
     })
   },
   /**
    * 修改购物车中商品的数量
    */
   modifyFoodNum: function (e) {
-    var foodIndex = e.currentTarget.dataset.foodindex
-    var foodListIndex = e.currentTarget.dataset.foodlistindex
-    var orderIndex = e.currentTarget.dataset.orderindex
-    var foodList = this.data.foodList
-    var shoppingCart = this.data.shoppingCart
-    var orderID = foodList[foodListIndex].list[foodIndex].orderList[orderIndex].orderID
-    var src = e.currentTarget.dataset.src
-    var allNum = this.data.allNum
-    var allPrice = this.data.allPrice
-    if (src == 'del') {
-      foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num--
-      shoppingCart[orderID].num--
-      allNum--
-      allPrice -= shoppingCart[orderID].price
-      this.setData({
-        foodList: foodList,
-        shoppingCart: shoppingCart,
-        allNum: allNum,
-        allPrice: allPrice,
-      })
-    } else if (src == 'add') {
-      foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num++
-      shoppingCart[orderID].num++
-      allNum++
-      allPrice += shoppingCart[orderID].price
-      this.setData({
-        foodList: foodList,
-        shoppingCart: shoppingCart,
-        allNum: allNum,
-        allPrice: allPrice,
-      })
+    console.log(e)
+    var srcFrom = e.currentTarget.dataset.from
+    var foodIndex
+    var foodListIndex
+    var src
+    var allNum
+    var allPrice
+    var foodList
+    var shoppingCart
+    var shoppingCartNum
+    var orderIndex
+    if(srcFrom == "foodList"){
+      orderIndex = e.currentTarget.dataset.orderindex
+      foodIndex = e.currentTarget.dataset.foodindex
+      foodListIndex = e.currentTarget.dataset.foodlistindex
+      src = e.currentTarget.dataset.src
+      allNum = this.data.allNum
+      allPrice = this.data.allPrice
+      foodList = this.data.foodList
+      shoppingCart = this.data.shoppingCart
+      shoppingCartNum = this.data.shoppingCartNum
+    }else{
+      var index = e.currentTarget.dataset.index
+      shoppingCart = this.data.shoppingCart
+      src = e.currentTarget.dataset.src
+      foodIndex = shoppingCart[index].foodIndex
+      foodListIndex = shoppingCart[index].foodListIndex
+      allNum = this.data.allNum
+      allPrice = this.data.allPrice
+      foodList = this.data.foodList
+      shoppingCartNum = this.data.shoppingCartNum
+      orderIndex = shoppingCart[index].orderListIndex
     }
+    
+    if(foodList[foodListIndex].list[foodIndex].hasProperty == false){
+      if (foodList[foodListIndex].list[foodIndex].orderList.length == 0){
+        var order = {
+          orderID: shoppingCart.length,
+          foodName: foodList[foodListIndex].list[foodIndex].name,
+          num: 1,
+          priceProperty: [],
+          singleProperty: [],
+          mulProperty: [],
+          propertyString: "",
+          pricePropertyString: "",
+          price: foodList[foodListIndex].list[foodIndex].price
+        }
+        allNum++
+        shoppingCartNum++
+        allPrice = allPrice + foodList[foodListIndex].list[foodIndex].price
+        foodList[foodListIndex].list[foodIndex].orderList.push(order)
+        shoppingCart.push(order)
+      }else{
+        if(src == 'add'){
+          foodList[foodListIndex].list[foodIndex].orderList[0].num ++
+          var orderID = foodList[foodListIndex].list[foodIndex].orderList[0].orderID
+          shoppingCart[orderID].num ++ 
+          if (shoppingCart[orderID].num == 1) {
+            shoppingCartNum++
+          }
+          allNum ++
+          allPrice = allPrice + foodList[foodListIndex].list[foodIndex].orderList[0].price
+        }else if(src == 'del'){
+          foodList[foodListIndex].list[foodIndex].orderList[0].num --
+          var orderID = foodList[foodListIndex].list[foodIndex].orderList[0].orderID
+          shoppingCart[orderID].num --
+          if (shoppingCart[orderID].num == 0) {
+            shoppingCartNum--
+            //等于0时隐藏购物车详情
+            if(shoppingCartNum == 0){
+              this.setData({
+                hiddenShoppingCartDetail: true
+              })
+            }
+          }
+          allNum --
+          allPrice = allPrice - foodList[foodListIndex].list[foodIndex].orderList[0].price
+        }
+      }
+      
+      this.setData({
+        foodList: foodList,
+        shoppingCart: shoppingCart,
+        shoppingCartNum: shoppingCartNum,
+        allNum: allNum,
+        allPrice: allPrice,
+      })
+    }else{
+      var orderID = foodList[foodListIndex].list[foodIndex].orderList[orderIndex].orderID
+      if (src == 'del') {
+        foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num--
+        shoppingCart[orderID].num--
+        allNum--
+        allPrice -= shoppingCart[orderID].price
+        if (shoppingCart[orderID].num == 0) {
+          shoppingCartNum--
+          //等于0时隐藏购物车详情
+          if (shoppingCartNum == 0) {
+            this.setData({
+              hiddenShoppingCartDetail: true
+            })
+          }
+        }
+        this.setData({
+          foodList: foodList,
+          shoppingCart: shoppingCart,
+          shoppingCartNum: shoppingCartNum,
+          allNum: allNum,
+          allPrice: allPrice,
+        })
+      } else if (src == 'add') {
+        foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num++
+        shoppingCart[orderID].num++
+        if (shoppingCart[orderID].num == 1) {
+          shoppingCartNum++
+        }
+        allNum++
+        allPrice += shoppingCart[orderID].price
+        this.setData({
+          foodList: foodList,
+          shoppingCart: shoppingCart,
+          shoppingCartNum: shoppingCartNum,
+          allNum: allNum,
+          allPrice: allPrice,
+        })
+      }
+    } 
   },
   /**
    * 打开修改购物车中的属性的窗口
@@ -847,6 +956,51 @@ Page({
       shoppingCart: shoppingCart,
       modifyProperty: true,
     })
+  },
+  /**
+   * 显示购物车详情
+   */
+  showShoppingCartDetail: function(e){
+    var status = e.currentTarget.dataset.status
+    var shoppingCart = this.data.shoppingCart
+    console.log(e)
+    //第1步：创建动画实例
+    var animation = wx.createAnimation({
+      duration: 200,
+      transformOrigin: '50% 100% 0'
+    })
+
+    //第2步：这个动画实例赋给当前动画实例
+    this.animation = animation
+
+    //第3步：执行第一组动画
+    animation.opacity(0).scaleY(0).step();
+
+    // 第4步：导出动画对象赋给数据对象储存 
+    this.setData({
+      animationData: animation.export()
+    })
+
+    // 第5步：设置定时器到指定时候后，执行第二组动画 
+    setTimeout(function () {
+      // 执行第二组动画 
+      animation.opacity(1).scaleY(1).step();
+      // 给数据对象储存的第一组动画，更替为执行完第二组动画的动画对象 
+      this.setData({
+        animationData: animation
+      })
+    }.bind(this), 200)
+
+    if (status == 'open') {
+      this.setData({
+        hiddenShoppingCartDetail: !this.data.hiddenShoppingCartDetail
+      })
+    }
+    if (status == 'close') {
+      this.setData({
+        hiddenShoppingCartDetail: true
+      })
+    }
   }
 })
 

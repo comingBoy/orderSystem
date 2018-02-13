@@ -83,15 +83,13 @@
 
               <!--不需要选择属性-->
               <view class='button' wx:else>
-                <view class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
-                  -
-                </view>
+                <image class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/del.png'>                
+                </image>
                 <view class='foodNum' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}'>
                   {{food.orderList[0].num}}
                 </view>
-                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
-                  +
-                </view>
+                <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
+                </image>
               </view>
             </view>
             <!--显示订单信息,当存在属性选择的时候并且该物品在订单中才会显示-->
@@ -147,8 +145,8 @@
     </view>
     <!--购物车费用-->
     <view class='allPrice'>
-      <text style='font-size:35rpx;margin:40rpx 0 0 30rpx;font-weight:600;'>总计</text>
-      <text style='font-size:35rpx;color:#DF6448;font-weight:600;margin:40rpx 0 0 16rpx;'>¥{{allPrice}}</text>
+      <text style='font-size:35rpx;margin:40rpx 0 0 30rpx;'>总计</text>
+      <text style='font-size:35rpx;color:#DF6448;margin:40rpx 0 0 16rpx;'>¥{{allPrice}}</text>
     </view>
     <!--下单按钮-->
     <view class='payButtom' bindtap='pay'>

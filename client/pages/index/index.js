@@ -335,9 +335,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //传入shopId
-    var shopId = 1
-    this.refresh(shopId)
+    
   },
 
   /**
@@ -717,6 +715,7 @@ Page({
           allNum ++
           allPrice = allPrice + foodList[foodListIndex].list[foodIndex].orderList[0].price
         }else if(src == 'del'){
+          if (foodList[foodListIndex].list[foodIndex].orderList[0].num == 0) return
           foodList[foodListIndex].list[foodIndex].orderList[0].num --
           var orderID = foodList[foodListIndex].list[foodIndex].orderList[0].orderID
           shoppingCart[orderID].num --
@@ -744,6 +743,7 @@ Page({
     }else{
       var orderID = foodList[foodListIndex].list[foodIndex].orderList[orderIndex].orderID
       if (src == 'del') {
+        if (foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num == 0) return
         foodList[foodListIndex].list[foodIndex].orderList[orderIndex].num--
         shoppingCart[orderID].num--
         allNum--

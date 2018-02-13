@@ -204,31 +204,23 @@ page {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
 }
 
 .addButton {
-  border: solid 1rpx #bebebe;
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 45rpx;
-  color: #bebebe;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .delButton {
-  border: solid 1rpx #bebebe;
-  width: 50rpx;
-  height: 50rpx;
-  border-radius: 50%;
-  text-align: center;
-  line-height: 45rpx;
-  color: #bebebe;
+  width: 60rpx;
+  height: 60rpx;
 }
 
 .foodNum {
   color: #df6448;
   margin: 0 20rpx;
+  font-weight: 900;
 }
 
 .shoppingCart {
@@ -275,6 +267,7 @@ page {
 .allPrice {
   display: flex;
   width: 40%;
+  font-weight: 900;
 }
 
 .payButtom {

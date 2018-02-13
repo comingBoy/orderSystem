@@ -29,37 +29,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    getApp().globalData.order = {
-      openId: "objYV0feu9WbSIydHi5LrNlStxlw",
-      shopId: 1,
-      tableId: 1,
-      cost: 76,
-      date: '2018-02-18',
-      time: '14:00',
-      ifEatHere: 1,
-      ifFinish: 0,
-      orderFood: [
-        {
-          foodId: 1,
-          foodName: "小面",
-          singlePrice: 14,
-          orderNum: 2,
-          foodProperty: '小份,中麻,中辣',
-        }, {
-          foodId: 2,
-          foodName: '摊摊面',
-          foodNum: 3,
-          singlePrice: 16,
-          orderNum: 3,
-          foodProperty: '大份,中麻,中辣',
-        }
-      ]
-    }
     getApp().globalData.shop = {
       shopName: '佛系青蛙暨大店'
     }
     var that = this
     var order = getApp().globalData.order
+    console.log(order)
     order.shopName = getApp().globalData.shop.shopName
     period.getPeriod(order.date, order.time, function(res){
       order.period = res

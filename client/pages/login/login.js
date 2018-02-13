@@ -16,7 +16,15 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+    qcloud.setLoginUrl(config.service.loginUrl)
+    login.login(function (res) {
+      if (res.status == 1) {
+        getApp().globalData.userInfo = res.userInfo
+        wx.redirectTo({
+          url: '../index/index',
+        })
+      }
+    })
   },
 
   /**

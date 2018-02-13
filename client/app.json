@@ -1,10 +1,11 @@
 {
   "pages":[
     "pages/myOrder/myOrder",
+    "pages/login/login",
+    
     "pages/eatHereOrder/eatHereOrder",
     "pages/index/index",
     "pages/paySuccess/paySuccess",
-    "pages/login/login",
     "pages/test/test"
   ],
   "window":{

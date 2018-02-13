@@ -14,181 +14,13 @@ Page({
     chooseProperty: true,
     modifyProperty: true,
     hiddenShoppingCartDetail: true,
-    imagesList: ['../../images/xiaomian.jpg',
-      '../../images/tantanmian.jpg',
-    ],
+    imagesList: [],
     addressName: "绿地缤纷城店",
     tableNum: 1,
     classChooseId: 0,
     orderType: "店内点单(堂食)",
-    foodList: [
-      {
-        className: "面",
-        classID: "class0",
-        list: [
-          {
-            name: "小面",
-            photo: "../../images/xiaomian.jpg",
-            sellOut: false,
-            leastPrice: 14,
-            price: 14,
-            remark: "汤面",
-            hasProperty: true,
-            priceProperty: [
-              {
-                propertyName: "规格",
-                required: true,//必选
-                beChoosed: false,
-                isMul: false,
-                propertyList: [
-                  {
-                    name: '大碗',
-                    price: 16,
-                    beChoosed: false,
-                  },
-                  {
-                    name: '小碗',
-                    price: 14,
-                    beChoosed: false,
-                  }
-                ]
-              }
-            ],
-            singleProperty: [
-              {
-                propertyName: "做法",
-                required: true,//必选
-                beChoosed: false,
-                isMul: false,
-                propertyList: [
-                  {
-                    name: '无麻辣',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '微微麻辣',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '正常麻辣',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '超麻辣',
-                    beChoosed: false,
-                  }
-                ]
-              }
-            ],
-            mulProperty: [
-              {
-                propertyName: "忌口",
-                required: false,
-                beChoosed: false,
-                isMul: true,
-                propertyList: [
-                  {
-                    name: '少油',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '不要葱',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '清真',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '软面',
-                    beChoosed: false,
-                  },
-                  {
-                    name: '硬面',
-                    beChoosed: false,
-                  }
-                ]
-              }
-            ],
-            orderList: [
-
-            ],
-          },
-          {
-            name: "摊摊面",
-            photo: "../../images/tantanmian.jpg",
-            sellOut: false,
-            leastPrice: 14,
-            price: 14,
-            remark: "汤面",
-            hasProperty: true,
-            priceProperty: [
-              {
-                propertyName: "规格",
-                propertyList: [
-                  {
-                    name: '大碗',
-                    price: 16,
-                  },
-                  {
-                    name: '小碗',
-                    price: 14,
-                  }
-                ]
-              }
-            ],
-            singleProperty: [
-
-            ],
-            mulProperty: [
-
-            ],
-            orderList: [
-
-            ],
-          }
-        ]
-      },
-      {
-        className: "特色小吃",
-        classID: 'class1',
-        list: [
-          {
-            name: "极品上上签",
-            photo: "",
-            fixedPrice: true,
-            leastPrice: 30,
-            remark: "15串",
-            spec: [],
-            way: [],
-            Taboos: [],
-          },
-          {
-            name: "手抓饼",
-            photo: "",
-            leastPrice: 5,
-            remark: "",
-            remainNum: 0,
-            spec: [],
-            way: [],
-            Taboos: [],
-          },
-          {
-            name: "极品上上签",
-            photo: "",
-            fixedPrice: true,
-            leastPrice: 30,
-            remark: "15串",
-            spec: [],
-            way: [],
-            Taboos: [],
-          },
-        ]
-      }
-    ],
-    shoppingCart: [
-
-    ],
+    foodList: [],
+    shoppingCart: [],
     shoppingCartNum: 0,
     allPrice: 0,
     allNum: 0,
@@ -1042,8 +874,8 @@ Page({
       shopId: 1,
       tableId: 1,
       cost: this.data.allPrice,
-      date: util.getCurrentDateYMD,
-      time: util.getCurrentTimeHM,
+      date: util.getCurrentDateYMD(),
+      time: util.getCurrentTimeHM(),
       ifEatHere: 1,
       ifFinish: 0,
       orderFood: orderFood,

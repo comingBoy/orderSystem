@@ -200,7 +200,7 @@ page {
 }
 
 .button {
-  width: 31%;
+  width: 33%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -219,8 +219,8 @@ page {
 
 .foodNum {
   color: #df6448;
-  margin: 0 20rpx;
   font-weight: 900;
+  text-align: center;
 }
 
 .shoppingCart {
@@ -495,8 +495,10 @@ page {
 }
 
 .goodsNumButtom{
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  width:190rpx;
 }
 
 .goodsProperty{

@@ -1,18 +1,39 @@
-// pages/paySuccess/paySuccess.js
+// pages/myOrder/myOrder.js
 var order = require('../../utils/order.js')
+var util = require('../../utils/util.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    orderId: 1,
-    status: ''
+    getFoodList: ["打包自取", "堂食", "打包配送"],
+    address: '广州市番禺区兴业大道东855号',
+    order: ''
   },
 
-  getMyOrder: function () {
-    wx.redirectTo({
-      url: '../myOrder/myOrder',
+  refresh: function () {
+    var that = this
+    //var data = getApp().globalData.userInfo.openId
+    var openId = "objYV0feu9WbSIydHi5LrNlStxlw"
+    var data = {
+      openId: openId
+    }
+    wx.showLoading({
+      title: '读取中，请稍后',
+    })
+    order.getMyOrder(data, function (res) {
+      console.log(res.myOrder)
+      if (res.status == 1 && res.myOrder.length >0) {
+        that.setData({
+          order: res.myOrder
+        })
+      } else if (res.status == 1 && res.myOrder.length == 0) {
+        util.showModel("提示","尚无订单")
+      } else {
+        util.showModel("提示", "请求出错，请重试")
+      }
+      wx.hideLoading()
     })
   },
 
@@ -20,20 +41,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that = this
-    var data = {
-      order: getApp().globalData.order
-    }
-    wx.showLoading({
-      title: '支付中，请稍后',
-    })
-    order.newOrder(data, function (res) {
-      that.setData({
-        orderId: res.orderId,
-        status: res.status
-      })
-      wx.hideLoading()
-    })
+    this.refresh()
   },
 
   /**

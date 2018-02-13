@@ -202,7 +202,8 @@ Page({
       shopId: e
     }
     food.getFoodList(data, function (res) {
-      var foodList = res.data.foodList
+      console.log(res)
+      var foodList = res.foodList
       for(var i=0; i<foodList.length; i++) {
         for(var j=0; j<foodList[i].thisTypeFoodList.length; j++) {
           foodList[i].thisTypeFoodList[j].hasProperty = false
@@ -241,7 +242,6 @@ Page({
         foodList[i]['classID'] = 'class' + foodList[i]['foodTypeId']
         foodList[i]['list'] = foodList[i]['thisTypeFoodList']
         delete foodList[i]['foodTypeName']
-        delete foodList[i]['foodTypeId']
         delete foodList[i]['thisTypeFoodList']
         for (var j=0; j<foodList[i].list.length; j++) {
           foodList[i].list[j].orderList = new Array()
@@ -256,12 +256,10 @@ Page({
           delete foodList[i].list[j]['multiProperty']
         }
       }
-      console.log(foodList)
       
       that.setData({
         foodList: foodList
       })
-      
     })
   },
 
@@ -318,10 +316,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var obj = { key: '值' };
-    obj['abc'] = obj['key'];
-    delete obj['key'];
-    console.log(obj);
+    var shopId = 1
+    wx.showLoading({
+     title: '读取中，请稍后',
+    })
+    this.refresh(shopId)
+    wx.hideLoading()
   },
 
   /**

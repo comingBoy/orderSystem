@@ -38,4 +38,6 @@ router.post('/changeShopTime', controllers.shop.changeShopTime)
 
 router.post('/getUnfinishOrder', controllers.order.getUnfinishOrder)
 
+router.post('/getMyOrder', controllers.order.getMyOrder)
+
 module.exports = router

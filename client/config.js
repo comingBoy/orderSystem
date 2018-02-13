@@ -14,6 +14,8 @@ var config = {
         // 登录地址，用于建立会话
         loginUrl: `${host}/weapp/login`,
 
+        requestUrl: `${host}/weapp/user`,
+
         // 上传图片接口
         uploadUrl: `${host}/weapp/upload`,
    
@@ -34,6 +36,8 @@ var config = {
         newFoodUrl: `${host}/weapp/newFood`,
 
         getUnfinishOrderUrl: `${host}/weapp/getUnfinishOrder`,
+
+        getMyOrderUrl: `${host}/weapp/getMyOrder`,
 
     }
 };

@@ -1,9 +1,12 @@
 {
   "pages":[
     "pages/index/index",
+    "pages/myOrder/myOrder",
+    "pages/paySuccess/paySuccess",
+    "pages/login/login",
+    
     "pages/eatHereOrder/eatHereOrder",
-    "pages/test/test",
-    "pages/paySuccess/paySuccess"
+    "pages/test/test"
   ],
   "window":{
     "backgroundColor":"#393A3F",

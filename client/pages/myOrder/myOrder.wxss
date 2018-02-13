@@ -1,0 +1,61 @@
+/* pages/myOrder/myOrder.wxss */
+.order{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  height: 100%;
+  background-color: #F2F2F2
+}
+
+.orderDetail{
+  display:flex;
+  flex-direction:column;
+  width:100%;
+  font-size:30rpx;
+  align-items:center;
+  border-bottom:solid 2rpx #ebebeb;
+  background-color: #ffffff
+}
+
+.detail{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  width:90%;
+  margin-top: 5rpx;
+  border-bottom:solid 2rpx #ebebeb;
+}
+
+.property{
+  color: #888888
+}
+
+.context{
+  width: 40%;
+}
+
+.food{
+  display: flex;
+  padding-left: 30rpx;
+}
+
+.food0{
+  display: flex;
+  flex-direction: column
+}
+
+.foodProperty{
+  display: flex;
+  padding-left: 60rpx;
+  color: #888888;
+}
+
+.price{
+  display:flex;
+  flex-direction:row;
+}
+
+.symbol{
+  color: red;
+}

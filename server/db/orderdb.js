@@ -4,8 +4,8 @@ module.exports = {
 
   //提交订单
   async newOrder(args) {
-    let sql = 'INSERT INTO orderdb(orderId, shopId, tableId, cost, date, time, ifEatHere, ifFinish) VALUE(?,?,?,?,?,?,?,?)'
-    let params = [args.orderId, args.shopId, args.tableId, args.cost, args.date, args.time, args.ifEatHere, args.ifFinish]
+    let sql = 'INSERT INTO orderdb(openId, orderId, shopId, tableId, cost, date, time, ifEatHere, ifFinish) VALUE(?,?,?,?,?,?,?,?,?)'
+    let params = [args.openId, args.orderId, args.shopId, args.tableId, args.cost, args.date, args.time, args.ifEatHere, args.ifFinish]
     let result = await mysqlHelper.query(sql, params)
     return result
   },
@@ -44,8 +44,16 @@ module.exports = {
 
   //获取未完成订单
   async getUnfinishOrder(args) {
-    let sql = 'SELECT * FROM orderdb where ifFinish = 0 and shopId = ? and date = ? '
+    let sql = 'SELECT * FROM orderdb where ifFinish = 0 and shopId = ? and date = ?'
     let params = [args.shopId,args.date] 
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
+
+  //获取我的订单
+  async getMyOrder(args) {
+    let sql = 'SELECT * FROM orderdb where openId = ?'
+    let params = [args.openId]
     let result = await mysqlHelper.query(sql, params)
     return result
   },

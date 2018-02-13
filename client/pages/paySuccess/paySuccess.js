@@ -28,6 +28,7 @@ Page({
       title: '支付中，请稍后',
     })
     order.newOrder(data, function (res) {
+      console.log(res)
       that.setData({
         orderId: res.orderId,
         status: res.status

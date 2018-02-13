@@ -6,6 +6,14 @@
       <view>{{item.shopName}}</view>
     </view>
     <view class='detail'>
+      <view class='property'>订单号</view>
+      <view>{{item.orderId}}</view>
+    </view>
+    <view wx:if='{{item.ifEatHere == 1}}' class='detail'>
+      <view class='property'>桌位</view>
+      <view>{{item.tableId}}号桌</view>
+    </view>
+    <view class='detail'>
       <view class='property'>日期时段</view>
       <view>{{item.period}}</view>
     </view>

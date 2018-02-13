@@ -7,10 +7,12 @@ module.exports = {
   data = {
     openId,
     shopId,
+    shopName,
     tableId,
     cost,
     date,
     time,
+    period,
     ifEatHere,
     ifFinish(0),
     orderFood:[

@@ -260,6 +260,7 @@ Page({
       that.setData({
         foodList: foodList
       })
+      wx.hideLoading()
     })
   },
 
@@ -321,7 +322,6 @@ Page({
      title: '读取中，请稍后',
     })
     this.refresh(shopId)
-    wx.hideLoading()
   },
 
   /**

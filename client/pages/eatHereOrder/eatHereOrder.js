@@ -1,4 +1,5 @@
 // pages/eatHereOrder/eatHereOrder.js
+var period = require('../../utils/period.js')
 Page({
 
   /**
@@ -7,25 +8,7 @@ Page({
   data: {
     getFoodList: ["打包自取", "堂食", "打包配送"],
     address: '广州市番禺区兴业大道东855号',
-    order: {
-      shopName:'佛系青蛙暨大店',
-      period: '2月6日（周二） 晚餐',
-      ifEatHere: 1,
-      cost: 76,
-      orderFood: [
-        {
-          foodName: '小面',
-          orderNum: 2,
-          singlePrice: 14,
-          foodProperty: '小份,中麻,中辣'
-        }, {
-          foodName: '摊摊面',
-          orderNum: 3,
-          singlePrice: 16,
-          foodProperty: '大份,中麻,中辣'
-        }
-      ]
-    }
+    order: ''
   },
 
   modifyOrder: function () {
@@ -35,32 +18,7 @@ Page({
   },
 
   submit: function () {
-    getApp().globalData.order = {
-      openId: "objYV0feu9WbSIydHi5LrNlStxlw",
-      shopId: 1,
-      tableId: 1,
-      cost: 76,
-      date: '2018-02-12',
-      time:'21:18',
-      ifEatHere: 1,
-      ifFinish: 0,
-      orderFood:[
-        {
-          foodId: 1,
-          foodName: "小面",
-          singlePrice: 14,
-          orderNum: 2,
-          foodProperty: '小份,中麻,中辣',
-        },{
-          foodId: 2,
-          foodName: '摊摊面',
-          foodNum: 3,
-          singlePrice: 16,
-          orderNum: 3,
-          foodProperty: '大份,中麻,中辣',
-        }
-      ]
-    }
+    getApp().globalData.order = this.data.order
     //支付接口
     wx.navigateTo({
       url: '../paySuccess/paySuccess',
@@ -71,7 +29,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    getApp().globalData.order = {
+      openId: "objYV0feu9WbSIydHi5LrNlStxlw",
+      shopId: 1,
+      tableId: 1,
+      cost: 76,
+      date: '2018-02-18',
+      time: '14:00',
+      ifEatHere: 1,
+      ifFinish: 0,
+      orderFood: [
+        {
+          foodId: 1,
+          foodName: "小面",
+          singlePrice: 14,
+          orderNum: 2,
+          foodProperty: '小份,中麻,中辣',
+        }, {
+          foodId: 2,
+          foodName: '摊摊面',
+          foodNum: 3,
+          singlePrice: 16,
+          orderNum: 3,
+          foodProperty: '大份,中麻,中辣',
+        }
+      ]
+    }
+    getApp().globalData.shop = {
+      shopName: '佛系青蛙暨大店'
+    }
+    var that = this
+    var order = getApp().globalData.order
+    order.shopName = getApp().globalData.shop.shopName
+    period.getPeriod(order.date, order.time, function(res){
+      order.period = res
+      that.setData({
+        order: order
+      })
+    })
   },
 
   /**

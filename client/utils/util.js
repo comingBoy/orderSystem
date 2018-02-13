@@ -39,4 +39,23 @@ var showModel = (title, content) => {
     })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+var getCurrentDateYMD = function(){
+  var myDate = new Date()
+  var year = myDate.getFullYear()
+  var month = myDate.getMonth() + 1
+  var day = myDate.getDate()
+  year = year.toString() 
+  month = month < 10 ? '0' + month : month.toString() 
+  day = day < 10 ? '0' + day : day.toString()
+  return year + '-' +month + '-' + day
+}
+
+var getCurrentTimeHM = function(){
+  var myDate = new Date()
+  var hours = myDate.getHours() //获取当前小时数(0-23)
+  var min = myDate.getMinutes() //获取当前分钟数(0-59)
+  hours  = hours < 10 ? '0' + hours : hours.toString()
+  min = min < 10 ? '0' + min : min.toString()
+  return hours + ':' + min
+}
+module.exports = { formatTime, showBusy, showSuccess, showModel, getCurrentDateYMD, getCurrentTimeHM }

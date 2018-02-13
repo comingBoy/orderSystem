@@ -1,6 +1,7 @@
 //index.js
 var food = require('../../utils/food.js')
 var foodType = require('../../utils/foodType.js')
+var util = require('../../utils/util.js')
 Page({
 
   /**
@@ -256,10 +257,10 @@ Page({
           delete foodList[i].list[j]['multiProperty']
         }
       }
-      
       that.setData({
         foodList: foodList
       })
+      wx.hideLoading()
     })
   },
 
@@ -321,7 +322,6 @@ Page({
      title: '读取中，请稍后',
     })
     this.refresh(shopId)
-    wx.hideLoading()
   },
 
   /**
@@ -573,6 +573,7 @@ Page({
       foodIndex: foodIndex,
       foodListIndex: foodListIndex,
       orderListIndex: 0,
+      foodId: chooseFoodInfo.foodId,
     }
     for (var i = 0; i < chooseFoodInfo.priceProperty.length; i++) {
       for (var j = 0; j < chooseFoodInfo.priceProperty[i].propertyList.length; j++) {
@@ -688,6 +689,7 @@ Page({
         var order = {
           orderID: shoppingCart.length,
           foodName: foodList[foodListIndex].list[foodIndex].name,
+          foodId: foodList[foodListIndex].list[foodIndex].foodId,
           num: 1,
           priceProperty: [],
           singleProperty: [],
@@ -1009,7 +1011,49 @@ Page({
    * 支付按钮
    */
   pay: function(e){
-
+    var userInfo = getApp().globalData.userInfo
+    var shoppingCart = this.data.shoppingCart
+    var orderFood = []
+    for(var food of shoppingCart){
+      if(food.num > 0){
+        var foodProperty = ''
+        if(food.pricePropertyString.length > 0){
+          foodProperty = food.pricePropertyString
+          if(food.propertyString.length > 0){
+            foodProperty = foodProperty + ',' + food.propertyString
+          }
+        }else if(food.propertyString.length > 0){
+          foodProperty = food.propertyString
+        }
+        var order = {
+          foodId: food.foodId,
+          foodName: food.foodName,
+          singlePrice: food.price,
+          orderNum: food.num,
+          foodProperty: foodProperty,
+        }
+        orderFood.push(order)
+      }else{
+        continue
+      }
+    }
+    getApp().globalData.order = {
+      openId: userInfo.openId,
+      shopId: 1,
+      tableId: 1,
+      cost: this.data.allPrice,
+      date: util.getCurrentDateYMD,
+      time: util.getCurrentTimeHM,
+      ifEatHere: 1,
+      ifFinish: 0,
+      orderFood: orderFood,
+    }
+    wx.navigateTo({
+      url: '../eatHereOrder/eatHereOrder',
+      success: function(res) {},
+      fail: function(res) {},
+      complete: function(res) {},
+    })
   }
 })
 

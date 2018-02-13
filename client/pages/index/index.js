@@ -202,7 +202,8 @@ Page({
       shopId: e
     }
     food.getFoodList(data, function (res) {
-      var foodList = res.data.foodList
+      console.log(res)
+      var foodList = res.foodList
       for(var i=0; i<foodList.length; i++) {
         for(var j=0; j<foodList[i].thisTypeFoodList.length; j++) {
           foodList[i].thisTypeFoodList[j].hasProperty = false
@@ -241,7 +242,6 @@ Page({
         foodList[i]['classID'] = 'class' + foodList[i]['foodTypeId']
         foodList[i]['list'] = foodList[i]['thisTypeFoodList']
         delete foodList[i]['foodTypeName']
-        delete foodList[i]['foodTypeId']
         delete foodList[i]['thisTypeFoodList']
         for (var j=0; j<foodList[i].list.length; j++) {
           foodList[i].list[j].orderList = new Array()
@@ -260,7 +260,6 @@ Page({
       that.setData({
         foodList: foodList
       })
-      wx.hideLoading()
     })
   },
 
@@ -319,7 +318,7 @@ Page({
   onLoad: function (options) {
     var shopId = 1
     wx.showLoading({
-      title: '读取中，请稍后',
+     title: '读取中，请稍后',
     })
     this.refresh(shopId)
     wx.hideLoading()
@@ -695,7 +694,10 @@ Page({
           mulProperty: [],
           propertyString: "",
           pricePropertyString: "",
-          price: foodList[foodListIndex].list[foodIndex].price
+          price: foodList[foodListIndex].list[foodIndex].price,
+          foodIndex: foodIndex,
+          foodListIndex: foodListIndex,
+          orderListIndex: orderIndex,
         }
         allNum++
         shoppingCartNum++

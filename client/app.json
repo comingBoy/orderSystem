@@ -1,9 +1,10 @@
 {
   "pages":[
+    "pages/index/index",
     "pages/myOrder/myOrder",
     "pages/paySuccess/paySuccess",
     "pages/login/login",
-    "pages/index/index",
+    
     "pages/eatHereOrder/eatHereOrder",
     "pages/test/test"
   ],

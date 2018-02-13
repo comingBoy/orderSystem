@@ -36,7 +36,7 @@ router.post('/newFoodType', controllers.foodType.newFoodType)
 
 router.post('/changeShopTime', controllers.shop.changeShopTime)
 
-router.post('/getUnfinishOrder', controllers.order.getUnfinishOrder)
+router.post('/getOrder', controllers.order.getOrder)
 
 router.post('/getMyOrder', controllers.order.getMyOrder)
 

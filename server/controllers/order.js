@@ -82,11 +82,11 @@ module.exports = {
   },
 
   //获取未完成订单
-  getUnfinishOrder: async ctx => {
+  getOrder: async ctx => {
     var req, req0, res, res0, status
-    var unfinishOrder = []
+    var order = []
     req = ctx.request.body
-    res = await orderdb.getUnfinishOrder(req)
+    res = await orderdb.getOrder(req)
     let t = typeof(res)
     if(t == 'object' ){
       status = 1
@@ -96,14 +96,12 @@ module.exports = {
         orderId : res[i].orderId,
         date : res[i].date
         }
-        
         res0 = await orderFooddb.getOrderFood(req0)
         let t0=typeof(res0)
         if(t0 == 'object'){
-          unfinishOrder[i] = {
-          order:res[i],
-          orderFood:res0
-          }
+          order[i] = new Object()
+          order[i] = res[i],
+          order[i].orderFood = res0
         }else{
           status = -1
           break
@@ -115,7 +113,7 @@ module.exports = {
  
     ctx.body = {
       status: status,
-      unfinishOrder: unfinishOrder
+      order: order
     }
   },
 

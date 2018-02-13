@@ -35,7 +35,7 @@ module.exports = {
 
   /*完成订单
   data = {
-    orderId
+    id
   }
   */
   finishOrder: function (data, callback) {
@@ -45,8 +45,8 @@ module.exports = {
   },
 
   //获取未完成订单
-  getUnfinishOrder: function (data, callback) {
-    net.request(data, config.service.getUnfinishOrderUrl, function (res) {
+  getOrder: function (data, callback) {
+    net.request(data, config.service.getOrderUrl, function (res) {
       callback(res.data)
     })
   },

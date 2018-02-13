@@ -36,16 +36,16 @@ module.exports = {
 
   //完成订单
   async finishOrder(args) {
-    let sql = 'UPDATE orderdb SET ifFinish = 1 where orderId = ?'
-    let params = [args.orderId]
+    let sql = 'UPDATE orderdb SET ifFinish = 1 where id = ?'
+    let params = [args.id]
     let result = await mysqlHelper.query(sql, params)
     return result
   },
 
-  //获取未完成订单
-  async getUnfinishOrder(args) {
-    let sql = 'SELECT * FROM orderdb where ifFinish = 0 and shopId = ? and date = ?'
-    let params = [args.shopId,args.date] 
+  //获取完成或未完成订单
+  async getOrder(args) {
+    let sql = 'SELECT * FROM orderdb where ifFinish = ? and shopId = ? and date = ?'
+    let params = [args.ifFinish, args.shopId,args.date] 
     let result = await mysqlHelper.query(sql, params)
     return result
   },

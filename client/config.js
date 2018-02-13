@@ -35,7 +35,7 @@ var config = {
 
         newFoodUrl: `${host}/weapp/newFood`,
 
-        getUnfinishOrderUrl: `${host}/weapp/getUnfinishOrder`,
+        getOrderUrl: `${host}/weapp/getOrder`,
 
         getMyOrderUrl: `${host}/weapp/getMyOrder`,
 

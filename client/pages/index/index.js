@@ -35,7 +35,6 @@ Page({
       shopId: e
     }
     food.getFoodList(data, function (res) {
-      console.log(res)
       var foodList = res.foodList
       for(var i=0; i<foodList.length; i++) {
         for(var j=0; j<foodList[i].thisTypeFoodList.length; j++) {
@@ -167,9 +166,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //传入shopId
-    var shopId = 1
-    this.refresh(shopId)
+    
   },
 
   /**

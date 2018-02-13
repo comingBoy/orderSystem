@@ -336,8 +336,8 @@ Page({
    */
   onShow: function () {
     //传入shopId
-    //var shopId = 1
-    //this.refresh(shopId)
+    var shopId = 1
+    this.refresh(shopId)
   },
 
   /**
@@ -694,7 +694,10 @@ Page({
           mulProperty: [],
           propertyString: "",
           pricePropertyString: "",
-          price: foodList[foodListIndex].list[foodIndex].price
+          price: foodList[foodListIndex].list[foodIndex].price,
+          foodIndex: foodIndex,
+          foodListIndex: foodListIndex,
+          orderListIndex: orderIndex,
         }
         allNum++
         shoppingCartNum++
@@ -1001,6 +1004,12 @@ Page({
         hiddenShoppingCartDetail: true
       })
     }
+  },
+  /**
+   * 支付按钮
+   */
+  pay: function(e){
+
   }
 })
 

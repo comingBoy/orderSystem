@@ -83,13 +83,13 @@
 
               <!--不需要选择属性-->
               <view class='button' wx:else>
-                <view class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
+                <view class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
                   -
                 </view>
                 <view class='foodNum' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}'>
                   {{food.orderList[0].num}}
                 </view>
-                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
+                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
                   +
                 </view>
               </view>
@@ -120,7 +120,7 @@
                   <view class='foodNum'>
                     {{order.num}}
                   </view>
-                  <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}'>
+                  <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
                     +
                   </view>
                 </view>

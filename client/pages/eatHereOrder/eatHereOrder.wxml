@@ -9,6 +9,10 @@
       <view class='property'>门店</view>
       <view>{{order.shopName}}</view>
     </view>
+    <view wx:if='{{order.ifEatHere == 1}}' class='detail'>
+      <view class='property'>桌位</view>
+      <view>{{order.tableId}}号桌</view>
+    </view>
     <view class='detail'>
       <view class='property'>日期时段</view>
       <view>{{order.period}}</view>

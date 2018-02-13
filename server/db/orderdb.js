@@ -4,8 +4,8 @@ module.exports = {
 
   //提交订单
   async newOrder(args) {
-    let sql = 'INSERT INTO orderdb(openId, orderId, shopId, tableId, cost, date, time, ifEatHere, ifFinish) VALUE(?,?,?,?,?,?,?,?,?)'
-    let params = [args.openId, args.orderId, args.shopId, args.tableId, args.cost, args.date, args.time, args.ifEatHere, args.ifFinish]
+    let sql = 'INSERT INTO orderdb(openId, orderId, shopId, shopName, tableId, cost, date, time, period, ifEatHere, ifFinish) VALUE(?,?,?,?,?,?,?,?,?,?,?)'
+    let params = [args.openId, args.orderId, args.shopId, args.shopName, args.tableId, args.cost, args.date, args.time, args.period, args.ifEatHere, args.ifFinish]
     let result = await mysqlHelper.query(sql, params)
     return result
   },

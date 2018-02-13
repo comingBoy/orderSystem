@@ -4,17 +4,21 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  height: 100%;
-  background-color: #F2F2F2
+  width: 100%;
+  margin-top:50rpx;
 }
 
 .orderDetail{
   display:flex;
   flex-direction:column;
-  width:100%;
+  width:95%;
+  box-sizing: border-box;
+  border-bottom:solid 5rpx #ebebeb;
+  border-left:solid 2rpx #ebebeb;
+  border-right:solid 5rpx #ebebeb;
+  border-top:solid 2rpx #ebebeb;
   font-size:30rpx;
   align-items:center;
-  border-bottom:solid 2rpx #ebebeb;
   background-color: #ffffff
 }
 

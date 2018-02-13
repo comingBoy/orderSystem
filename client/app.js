@@ -1,7 +1,4 @@
 //app.js
-var login = require('./utils/login.js')
-var qcloud = require('./vendor/wafer2-client-sdk/index.js')
-var config = require('./config.js')
 
 App({
   /**

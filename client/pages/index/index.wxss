@@ -292,12 +292,11 @@ page {
   top: -24rpx;
   color: white;
   background-color: #df6448;
-  padding: 0rpx;
-  width: 36rpx;
-  height: 36rpx;
-  font-size: 29rpx;
+  width: 40rpx;
+  height: 40rpx;
+  font-size: 30rpx;
   text-align: center;
-  line-height: 36rpx;
+  line-height: 40rpx;
   border-radius: 50%;
 }
 
@@ -472,7 +471,8 @@ page {
 }
 
 .goodsDetail{
-
+  font-size: 35rpx;
+  font-weight: 900;
 }
 
 .goodsInfo{
@@ -480,14 +480,10 @@ page {
   height: 120rpx;
   justify-content: space-around;
   align-items: center;
-  font-size:35rpx;
-  font-weight:600;
 }
 
 .goodsName{
   display:flex;
-  font-size:35rpx;
-  font-weight:600;
 }
 
 .goodsPrice{

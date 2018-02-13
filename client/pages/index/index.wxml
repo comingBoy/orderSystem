@@ -76,9 +76,8 @@
 
               <!--需要选择属性，不需要选择规格-->
               <view class='button' wx:elif='{{food.singleProperty.length > 0 || food.mulProperty.length > 0}}'>
-                <view class='addButton'>
-                  +
-                </view>
+                <image class='addButton' src='../../images/add.png'>
+                </image>
               </view>
 
               <!--不需要选择属性-->
@@ -112,15 +111,13 @@
                   </view>
                 </view>
                 <view class='addDelButton'>
-                  <view class='delButton' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
-                    -
-                  </view>
+                  <image class='delButton' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/del.png'>
+                  </image>
                   <view class='foodNum'>
                     {{order.num}}
                   </view>
-                  <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList'>
-                    +
-                  </view>
+                  <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
+                  </image>
                 </view>
 
               </view>
@@ -174,15 +171,13 @@
               ¥{{item.num*item.price}}
             </view>
             <view class='goodsNumButtom'>
-              <view class='delButton' bindtap='modifyFoodNum' data-src='del' data-index='{{index}}' data-from='shoppingCart'>
-                  -
-                </view>
-                <view class='foodNum'>
-                  {{item.num}}
-                </view>
-                <view class='addButton' bindtap='modifyFoodNum' data-src='add' data-index='{{index}}' data-from='shoppingCart'>
-                  +
-                </view>
+              <image class='delButton' bindtap='modifyFoodNum' data-src='del' data-index='{{index}}' data-from='shoppingCart' src='../../images/del.png'>    
+              </image>
+              <view class='foodNum'>
+                {{item.num}}
+              </view>
+              <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-index='{{index}}' data-from='shoppingCart' src='../../images/add.png'>
+              </image>
             </view>
           </view>
           <view class='goodsProperty'>

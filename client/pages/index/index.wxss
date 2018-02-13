@@ -417,6 +417,7 @@ page {
   width: 30%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: absolute;
   right: 0rpx;
   margin: 60rpx 10rpx;
@@ -495,6 +496,7 @@ page {
 
 .goodsNumButtom{
   display: flex;
+  align-items: center;
 }
 
 .goodsProperty{

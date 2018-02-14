@@ -48,3 +48,7 @@
     </view>
   </view>
 </view>
+
+<view class='add'>
+  <button class='button' bindtap='addMore'>前往点餐</button>
+</view>

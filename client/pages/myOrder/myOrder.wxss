@@ -63,3 +63,16 @@
 .symbol{
   color: red;
 }
+
+.add {
+  background: #f6f6f6;
+  height: 14%;
+  width: 100%;
+  border-top: solid 1rpx #e6e6e6;
+  display: flex;
+  z-index: 1001;
+}
+
+.button{
+  font-size:15px;
+}

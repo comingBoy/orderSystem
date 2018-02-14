@@ -1,9 +1,12 @@
 const orderdb = require('../db/orderdb.js')
 const orderFooddb = require('../db/orderFooddb.js')
+const { tunnel } = require('../qcloud')
+const debug = require('debug')('koa-weapp-demo')
 
 function sleep(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
+
 
 module.exports = {
 
@@ -28,9 +31,7 @@ module.exports = {
     }
     orderId = req.order.orderId
     if (status != -1) {
-      console.log(req.order)
       res = await orderdb.newOrder(req.order)
-      console.log(res)
       t = typeof (res)
       if (t == 'object') {
         for (var i = 0; i < req.order.orderFood.length; i++) {
@@ -38,9 +39,7 @@ module.exports = {
           req0.shopId = req.order.shopId
           req0.orderId = req.order.orderId
           req0.date = req.order.date
-          console.log(req0)
           res0 = await orderFooddb.newOrderFood(req0)
-          console.log(res0)
           t0 = typeof (res0)
           if (t0 != 'object') {
             res = await orderdb.delOrder(req0)
@@ -63,6 +62,61 @@ module.exports = {
 
     canOrder = 1
 
+    var status0
+    var order = []
+    res = await orderdb.getOrder(req.order)
+    t = typeof (res)
+    if (t == 'object') {
+      status0 = 1
+      for (var i = 0; i < res.length; i++) {
+        req0 = {
+          shopId: res[i].shopId,
+          orderId: res[i].orderId,
+          date: res[i].date
+        }
+        res0 = await orderFooddb.getOrderFood(req0)
+        t0 = typeof (res0)
+        if (t0 == 'object') {
+          order[i] = new Object()
+          order[i] = res[i],
+          order[i].orderFood = res0
+        } else {
+          status0 = -1
+          break
+        }
+      }
+    } else {
+      status0 = -1
+    }
+
+    var wsTunnelIds = new Array()
+    for (var i = 0; i < connectedTunnelIds.length; i++) {
+      if (userMap[connectedTunnelIds[i]] == req.order.shopId) {
+        wsTunnelIds.push(connectedTunnelIds[i])
+      }
+    }
+    var wsType = 'speak'
+    var wsContent = {
+      status: status0,
+      order: order
+    }
+
+    if (wsTunnelIds.length > 0){
+      await tunnel.broadcast(wsTunnelIds, wsType, wsContent).then(result => {
+        const invalidTunnelIds = result.data && result.data.invalidTunnelIds || []
+        if (invalidTunnelIds.length) {
+          invalidTunnelIds.forEach(tunnelId => {
+            delete userMap[tunnelId]
+            const index = connectedTunnelIds.indexOf(tunnelId)
+            if (~index) {
+              connectedTunnelIds.splice(index, 1)
+            }
+          })
+        }
+      })
+    }
+
+
     ctx.body = {
       status: status,
       orderId: orderId
@@ -81,14 +135,14 @@ module.exports = {
     }
   },
 
-  //获取未完成订单
+  //获取订单
   getOrder: async ctx => {
     var req, req0, res, res0, status
     var order = []
     req = ctx.request.body
     res = await orderdb.getOrder(req)
     let t = typeof(res)
-    if(t == 'object' ){
+    if(t == 'object' && res.length >0){
       status = 1
       for(var i = 0; i < res.length;i++){
         req0={
@@ -107,7 +161,9 @@ module.exports = {
           break
         }
       }
-    }else{
+    } else if (t == 'object' && res.length == 0) {
+      status = 0
+    } else{
       status = -1
     }
  

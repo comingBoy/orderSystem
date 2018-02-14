@@ -16,6 +16,12 @@ router.get('/login', authorizationMiddleware, controllers.login)
 // 用户信息接口（可以用来验证登录态）
 router.get('/user', validationMiddleware, controllers.user)
 
+// --- 信道服务接口 Demo --- //
+// GET  用来响应请求信道地址的
+router.get('/tunnel', controllers.tunnel.get)
+// POST 用来处理信道传递过来的消息
+router.post('/tunnel', controllers.tunnel.post)
+
 // --- 图片上传 Demo --- //
 // 图片上传接口，小程序端可以直接将 url 填入 wx.uploadFile 中
 router.post('/upload', controllers.upload)
@@ -39,5 +45,7 @@ router.post('/changeShopTime', controllers.shop.changeShopTime)
 router.post('/getOrder', controllers.order.getOrder)
 
 router.post('/getMyOrder', controllers.order.getMyOrder)
+
+router.post('/changeSell', controllers.food.changeSell)
 
 module.exports = router

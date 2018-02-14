@@ -1,6 +1,8 @@
 // pages/finishOrder/finishOrder.js
 var order = require('../../utils/order.js')
 var util = require('../../utils/util.js')
+var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+var config = require('../../config.js')
 Page({
 
   /**
@@ -11,10 +13,7 @@ Page({
     finishOrder: []
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
+  refresh: function(){
     var that = this
     var date = util.getCurrentDateYMD()
     var shopId = 1
@@ -24,17 +23,31 @@ Page({
       shopId: shopId,
       ifFinish: ifFinish
     }
-    order.getOrder(data, function(res) {
-      if (res.status == 1 && res.order.length > 0) {
+    wx.showLoading({
+      title: '读取中，请稍后',
+    })
+    order.getOrder(data, function (res) {
+      if (res.status == 1) {
         that.setData({
-          finishOrder: res.order
+          finishOrder: res.order.reverse()
         })
-      } else if (res.status == 1 && res.order.length == 0) {
+      } else if (res.status == 0) {
         util.showModel("提示", "尚无订单")
+        that.setData({
+          finishOrder: []
+        })
       } else {
         util.showModel("提示", "请求出错，请重试")
       }
+      wx.hideLoading()
     })
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+
   },
 
   /**
@@ -48,7 +61,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.refresh()
   },
 
   /**

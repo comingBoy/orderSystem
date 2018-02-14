@@ -16,8 +16,10 @@ var config = {
 
         requestUrl: `${host}/weapp/user`,
 
+        tunnelUrl: `${host}/weapp/tunnel`,
+
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`,
+        uploadImgUrl: `${host}/weapp/upload`,
    
         getFoodTypeListUrl: `${host}/weapp/getFoodTypeList`,
 
@@ -38,6 +40,8 @@ var config = {
         getOrderUrl: `${host}/weapp/getOrder`,
 
         getMyOrderUrl: `${host}/weapp/getMyOrder`,
+
+        changeSellUrl: `${host}/weapp/changeSell`,
 
     }
 };

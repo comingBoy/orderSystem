@@ -1,6 +1,10 @@
 // pages/unFinishOrder/unFinishOrder.js
 var order = require('../../utils/order.js')
 var util = require('../../utils/util.js')
+var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
+var config = require('../../config.js')
+
+
 Page({
 
   /**
@@ -25,13 +29,16 @@ Page({
       title: '读取中，请稍后',
     })
     order.getOrder(data, function (res) {
-      if (res.status == 1 && res.order.length > 0) {
-        res.order.reverse
+      console.log(res)
+      if (res.status == 1) {
         that.setData({
           unfinishOrder: res.order
         })
-      } else if (res.status == 1 && res.myOrder.length == 0) {
+      } else if (res.status == 0) {
         util.showModel("提示", "尚无订单")
+        that.setData({
+          unfinishOrder: []
+        })
       } else {
         util.showModel("提示", "请求出错，请重试")
       }
@@ -66,7 +73,59 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.refresh()
+    var that = this
+    //this.refresh()
+
+    var data = {
+      shopId: 1,
+      date: util.getCurrentDateYMD(),
+      ifFinish: 0
+    }
+    util.showBusy('信道连接中...')
+
+    var tunnel = this.tunnel = new qcloud.Tunnel(config.service.tunnelUrl)
+
+    tunnel.on('connect', () => {
+      util.showSuccess('信道已连接')
+      console.log("WebSocket 信道已连接")
+      console.log("发送数据...")
+      this.tunnel.emit('speak', {
+        data: data
+      });
+      console.log("发送完毕")
+    })
+
+    tunnel.on('reconnecting', () => {
+      console.log('WebSocket 信道正在重连...')
+      util.showBusy('正在重连')
+    })
+
+    tunnel.on('reconnect', () => {
+      console.log('WebSocket 信道重连成功')
+      util.showSuccess('重连成功')
+      console.log("发送数据...")
+      this.tunnel.emit('speak', {
+        data: data
+      });
+      console.log("发送完毕")
+    })
+
+    tunnel.on('error', error => {
+      util.showModel('信道发生错误', error)
+      console.error('信道发生错误：', error)
+    })
+
+    // 监听自定义消息（服务器进行推送）
+    tunnel.on('speak', speak => {
+      console.log('收到消息：', speak)
+      that.setData({
+        unfinishOrder: speak.order
+      })
+    })
+
+    // 打开信道
+    tunnel.open()
+
   },
 
   /**
@@ -80,14 +139,14 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    this.refresh()
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**

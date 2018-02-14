@@ -24,19 +24,25 @@ page {
   justify-content: flex-start;
 }
 
-.address {
+.addressName {
   width: 100%;
   background-color: #df6448;
   color: white;
   display: flex;
   justify-content: center;
-  height: 7%;
   font-size: 30rpx;
-  line-height: 80rpx;
 }
 
 .boxY {
   display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.shopmanage{
+  width: 45rpx;
+  height: 45rpx;
 }
 
 .orderBox {
@@ -487,14 +493,17 @@ page {
   display:flex;
   font-size:35rpx;
   font-weight:600;
+  width: 35%;
 }
 
 .goodsPrice{
   color:#df6448;
+  width: 15%;
 }
 
 .goodsNumButtom{
   display: flex;
+  width: 25%;
 }
 
 .goodsProperty{

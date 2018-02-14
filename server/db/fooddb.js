@@ -18,4 +18,12 @@ module.exports = {
     return result
   },
 
+  //起停售菜品
+  async changeSell(args) {
+    let sql = 'UPDATE fooddb SET ifSoldOut = ? where foodId = ?'
+    let params = [args.ifSoldOut, args.foodId]
+    let result = await mysqlHelper.query(sql, params)
+    return result
+  },
+
 }

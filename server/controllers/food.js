@@ -96,5 +96,17 @@ module.exports = {
     ctx.body = {
       status: status
     }
+  },
+
+  //起停售菜品
+  changeSell: async ctx => {
+    let req = ctx.request.body
+    let res = await fooddb.changeSell(req)
+    let t = typeof (res)
+    var status = t == 'object' ? 1 : -1
+
+    ctx.body = {
+      status: status
+    }
   }
 }

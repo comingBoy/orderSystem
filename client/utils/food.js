@@ -33,4 +33,16 @@ module.exports = {
       callback(res.data)
     })
   },
+
+  /*
+  data = {
+    foodId,
+    ifSoldOut
+  }
+  */
+  changeSell: function (data, callback) {
+    net.request(data, config.service.changeSellUrl, function (res) {
+      callback(res.data)
+    })
+  },
 }

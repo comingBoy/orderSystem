@@ -45,7 +45,7 @@ module.exports = {
   //获取完成或未完成订单
   async getOrder(args) {
     let sql = 'SELECT * FROM orderdb where ifFinish = ? and shopId = ? and date = ?'
-    let params = [args.ifFinish, args.shopId,args.date] 
+    let params = [args.ifFinish, args.shopId, args.date] 
     let result = await mysqlHelper.query(sql, params)
     return result
   },

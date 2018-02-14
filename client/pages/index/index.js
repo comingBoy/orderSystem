@@ -29,6 +29,12 @@ Page({
     finishModifyProperty: true,
   },
 
+  shopManage: function () {
+    wx.reLaunch({
+      url: '../unFinishOrder/unFinishOrder',
+    })
+  },
+
   refresh: function (e) {
     var that = this
     var data = {

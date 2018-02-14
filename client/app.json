@@ -2,6 +2,8 @@
   "pages":[
     "pages/login/login",
     "pages/unFinishOrder/unFinishOrder",
+    
+    "pages/upload/upload", 
     "pages/myOrder/myOrder",
     "pages/eatHereOrder/eatHereOrder",
     "pages/index/index",

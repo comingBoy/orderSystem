@@ -221,6 +221,8 @@ page {
   color: #df6448;
   font-weight: 900;
   text-align: center;
+  height:50rpx;
+  line-height:18rpx;
 }
 
 .shoppingCart {
@@ -296,7 +298,7 @@ page {
   height: 40rpx;
   font-size: 30rpx;
   text-align: center;
-  line-height: 40rpx;
+  line-height: 16rpx;
   border-radius: 50%;
 }
 

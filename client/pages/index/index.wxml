@@ -44,10 +44,13 @@
         <view class='foodBox'>
           <view wx:for='{{foodList.list}}' class='food' wx:for-item="food" wx:for-index='foodIndex'>
             <!--显示商品信息-->
-            <view class='foodInfoBox' bindtap='chooseProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}'>
+            <view class='foodInfoBox'   data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}'>
               <view class='imgBox'>
-                <image class='foodImg' src='{{food.photo}}' mode='aspectFit' bindtap='previewImage' data-src='{{food.photo}}'></image>
+              <!--显示图片-->
+                <image class='foodImg' src='{{food.photo}}' mode='aspectFit' bindtap='previewImage' data-src='{{food.photo}}' data-status='open'></image>
               </view>
+              <!--显示具体菜品信息及按键-->
+             <view class='foodDetailInfoBox' bindtap='chooseProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}'>
               <view class='foodInfo'>
                 <view class='foodName'>
                   {{food.name}}
@@ -73,13 +76,13 @@
                   选规格
                 </view>
               </view>
-
+              
               <!--需要选择属性，不需要选择规格-->
               <view class='button' wx:elif='{{food.singleProperty.length > 0 || food.mulProperty.length > 0}}'>
                 <image class='addButton' src='../../images/add.png'>
                 </image>
               </view>
-
+            
               <!--不需要选择属性-->
               <view class='button' wx:else>
                 <image class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/del.png'>                
@@ -89,6 +92,7 @@
                 </view>
                 <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
                 </image>
+              </view>
               </view>
             </view>
             <!--显示订单信息,当存在属性选择的时候并且该物品在订单中才会显示-->
@@ -119,12 +123,14 @@
                   <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
                   </image>
                 </view>
-
+              
               </view>
+              
             </view>
           </view>
         </view>
       </view>
+      
     </scroll-view>
   </view>
 
@@ -190,6 +196,12 @@
       
     </view>
   </view>
+</view>
+
+<!--图片预览界面-->
+<view class='previewImage'>
+  <view class='mask' data-status='close' hidden='{{previewImage}}'  bindtap='previewImage'></view>
+  <image class='previewImageBox' src='{{previewImageSrc}}' hidden='{{previewImage}}'></image>
 </view>
 
 <!--选择属性框-->

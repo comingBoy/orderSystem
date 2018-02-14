@@ -12,6 +12,8 @@ Page({
     foodListIndex: null,
     foodIndex: null,
     chooseProperty: true,
+    previewImage:true,
+    previewImageSrc: "../../images/xiaomian.jpg",
     modifyProperty: true,
     hiddenShoppingCartDetail: true,
     imagesList: [],
@@ -217,20 +219,25 @@ Page({
    * 预览图片
    */
   previewImage: function (e) {
-    var current = e.currentTarget.dataset.src
-
-    wx.previewImage({
-      current: current,
-      urls: this.data.imagesList,
-      success: function (res) { console.log("成功") },
-      fail: function (res) { console.log("失败") },
-      complete: function (res) { },
-    })
+    var status = e.currentTarget.dataset.status
+    
+  if (status == 'open') {
+      this.setData({
+        previewImage: false,
+        previewImageSrc: e.currentTarget.dataset.src
+        })
+    }
+    if (status == 'close') {
+      this.setData({
+        previewImage: true,
+        })
+    }
   },
   /**
    * 打开选择商品属性窗口
    */
   chooseProperty: function (e) {
+    console.log(111)
     var status = e.currentTarget.dataset.status
     var chooseFoodInfo
     if (status == 'open') {

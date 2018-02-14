@@ -188,7 +188,11 @@ page {
   height: 172rpx;
   width: 100%;
 }
-
+.foodDetailInfoBox{
+  display: flex;
+  height: 172rpx;
+  width: 100%;
+}
 .orderInfoBox {
   background: #f7f7f7;
   display: flex;
@@ -328,6 +332,16 @@ page {
   width: 180rpx;
   height: 180rpx;
   background-color: white;
+  padding: 10rpx;
+}
+
+.previewImageBox{
+  position: fixed;
+  z-index: 1002;
+  bottom: 450rpx;
+  left: 170rpx;
+  width: 400rpx;
+  height: 400rpx;
   padding: 10rpx;
 }
 

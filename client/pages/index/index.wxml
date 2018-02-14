@@ -50,7 +50,7 @@
                 <image class='foodImg' src='{{food.photo}}' mode='aspectFit' bindtap='previewImage' data-src='{{food.photo}}' data-status='open'></image>
               </view>
               <!--显示具体菜品信息及按键-->
-             <view class='foodDetailInfoBox' bindtap='chooseProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}'>
+            <view class='foodDetailInfoBox' bindtap='chooseProperty' data-status='open' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}'>
               <view class='foodInfo'>
                 <view class='foodName'>
                   {{food.name}}
@@ -95,6 +95,7 @@
               </view>
               </view>
             </view>
+            
             <!--显示订单信息,当存在属性选择的时候并且该物品在订单中才会显示-->
             <view wx:if='{{food.orderList.length > 0 && food.hasProperty == true}}'>
               <view wx:for='{{food.orderList}}' wx:for-item='order' hidden='{{order.num <= 0}}' wx:for-index='orderIndex' class='orderInfoBox'>
@@ -201,7 +202,7 @@
 <!--图片预览界面-->
 <view class='previewImage'>
   <view class='mask' data-status='close' hidden='{{previewImage}}'  bindtap='previewImage'></view>
-  <image class='previewImageBox' src='{{previewImageSrc}}' hidden='{{previewImage}}'></image>
+  <image class='previewImageBox'animation='{{animationData}}' src='{{previewImageSrc}}' hidden='{{previewImage}}'></image>
 </view>
 
 <!--选择属性框-->

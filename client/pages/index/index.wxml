@@ -87,9 +87,9 @@
               <view class='button' wx:else>
                 <image class='delButton' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/del.png'>                
                 </image>
-                <view class='foodNum' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}'>
+                <text class='foodNum' hidden='{{food.orderList.length == 0 || food.orderList[0].num == 0}}'>
                   {{food.orderList[0].num}}
-                </view>
+                </text>
                 <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
                 </image>
               </view>
@@ -117,9 +117,9 @@
                 <view class='addDelButton'>
                   <image class='delButton' bindtap='modifyFoodNum' data-src='del' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/del.png'>
                   </image>
-                  <view class='foodNum'>
+                  <text class='foodNum'>
                     {{order.num}}
-                  </view>
+                  </text>
                   <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-foodListIndex='{{foodListIndex}}' data-foodIndex='{{foodIndex}}' data-orderIndex='{{orderIndex}}' data-from='foodList' src='../../images/add.png'>
                   </image>
                 </view>
@@ -142,9 +142,9 @@
       <image src='../../images/shoppingCart.png' class='shoppingCartImg'>
       </image>
       <!--橙色圆点显示数量-->
-      <view class='showGoodsNum'>
+      <text class='showGoodsNum'>
         {{allNum}}
-      </view>
+      </text>
     </view>
     <!--购物车费用-->
     <view class='allPrice'>
@@ -179,9 +179,9 @@
             <view class='goodsNumButtom'>
               <image class='delButton' bindtap='modifyFoodNum' data-src='del' data-index='{{index}}' data-from='shoppingCart' src='../../images/del.png'>    
               </image>
-              <view class='foodNum'>
+              <text class='foodNum'>
                 {{item.num}}
-              </view>
+              </text>
               <image class='addButton' bindtap='modifyFoodNum' data-src='add' data-index='{{index}}' data-from='shoppingCart' src='../../images/add.png'>
               </image>
             </view>

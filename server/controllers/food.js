@@ -75,11 +75,47 @@ module.exports = {
             break
           }
         }
+      } else if (t == 'object' && res.length == 0) {
+        status = 0
       } else {
         status = -1
       }
     }
     
+    ctx.body = {
+      status: status,
+      foodList: foodList
+    }
+  },
+
+  //后台获取菜品列表
+  getFoodList0: async ctx => {
+    var req, req0, res, res0, t, t0, status
+    var foodList = []
+    req = ctx.request.body
+    res = await foodTypedb.getFoodTypeList(req)
+    t = typeof (res)
+    if (t == 'object' && res.length > 0) {
+      for (var i = 0; i < res.length; i++) {
+        res0 = await fooddb.getFoodList(res[i])
+        t0 = typeof (res0)
+        if (t0 == 'object') {
+          foodList[i] = {
+            foodTypeName: res[i].foodTypeName,
+            foodTypeId: res[i].foodTypeId,
+            thisTypeFoodList: res0
+          }
+        } else {
+          status = -1
+          break
+        }
+      }
+    } else if (t == 'object' && res.length == 0) {
+      status = 0
+    } else {
+      status = -1
+    }
+
     ctx.body = {
       status: status,
       foodList: foodList

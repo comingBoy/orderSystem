@@ -30,6 +30,8 @@ router.post('/getFoodTypeList', controllers.foodType.getFoodTypeList)
 
 router.post('/getFoodList', controllers.food.getFoodList)
 
+router.post('/getFoodList0', controllers.food.getFoodList0)
+
 router.post('/getShopInfo', controllers.shop.getShopInfo)
 
 router.post('/newOrder', controllers.order.newOrder)
@@ -47,5 +49,7 @@ router.post('/getOrder', controllers.order.getOrder)
 router.post('/getMyOrder', controllers.order.getMyOrder)
 
 router.post('/changeSell', controllers.food.changeSell)
+
+router.post('/changeShopStatus', controllers.shop.changeShopStatus)
 
 module.exports = router

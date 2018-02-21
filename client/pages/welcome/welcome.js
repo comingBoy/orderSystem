@@ -1,27 +1,47 @@
-// pages/login/login.js
-var qcloud = require('../../vendor/wafer2-client-sdk/index.js')
-var config = require('../../config.js')
-var login = require('../../utils/login.js')
-
+// pages/welcome/welcome.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
+    height: '',
+    width: ''
   },
 
+  eatHere: function () {
+    getApp().globalData.ifEatHere = 1
+    /*调用扫码
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+        wx.navigateTo({
+          url: '../index/index',
+        })
+      }
+    })
+    */
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
+
+  eatOut: function () {
+    getApp().globalData.ifEatHere = 0
+    wx.navigateTo({
+      url: '../index/index',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    qcloud.setLoginUrl(config.service.loginUrl)
-    login.login(function (res) {
-      if (res.status == 1) {
-        getApp().globalData.userInfo = res.userInfo
-        wx.redirectTo({
-          url: '../welcome/welcome',
+    var that = this
+    wx.getSystemInfo({
+      success: function (res) {
+        that.setData({
+          height: res.windowHeight,
+          width: res.windowWidth
         })
       }
     })

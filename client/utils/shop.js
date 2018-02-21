@@ -17,5 +17,11 @@ module.exports = {
     net.request(data, config.service.changeShopTimeUrl, function (res) {
       callback(res.data)
     })
-  }
+  },
+
+  changeShopStatus: function (data, callback) {
+    net.request(data, config.service.changeShopStatusUrl, function (res) {
+      callback(res.data)
+    })
+  },
 }

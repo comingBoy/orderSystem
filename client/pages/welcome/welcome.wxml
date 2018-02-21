@@ -1,0 +1,11 @@
+<!--pages/welcome/welcome.wxml-->
+<view class='background' style="background-image: url('http://qcloudtest-1256041440.cn-south.myqcloud.com/1519184417370-H1Y79w5Pf.jpg'); height: {{height}}px">
+  <view class='choose' bindtap='eatHere'>
+    <image class='image' style="height: {{width*0.3}}px" mode='aspectFit' src='../../images/eatHere.png'></image>
+    <text class='text'>堂食</text>
+  </view>
+  <view class='choose' bindtap='eatOut'>
+    <image class='image' style="height: {{width*0.3}}px" mode='aspectFit' src='../../images/eatOut.png'></image>
+    <text class='text'>打包</text>
+  </view>
+</view>

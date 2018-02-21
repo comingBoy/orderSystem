@@ -53,6 +53,12 @@ page {
   height: 87%;
 }
 
+.shopstatus{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .orderType {
   font-size: 30rpx;
   padding: 2%;

@@ -22,5 +22,16 @@ module.exports = {
     ctx.body = {
       status: status
       }
+  },
+
+  //改变店铺状态
+  changeShopStatus: async ctx => {
+    let req = ctx.request.body
+    let res = await shopdb.changeShopStatus(req)
+    let t = typeof (res)
+    let status = t == 'object' ? 1 : -1
+    ctx.body = {
+      status: status
+    }
   }
 }

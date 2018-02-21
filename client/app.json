@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/login/login",
+    "pages/welcome/welcome",
     "pages/unFinishOrder/unFinishOrder",
-    
-    "pages/upload/upload", 
+    "pages/upload/upload",
     "pages/myOrder/myOrder",
     "pages/eatHereOrder/eatHereOrder",
     "pages/index/index",
@@ -16,7 +16,7 @@
     "backgroundColor":"#393A3F",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#393A3F",
-    "navigationBarTitleText": "老太婆摊摊面-点单",
+    "navigationBarTitleText": "佛系青蛙美食城",
     "navigationBarTextStyle":"white"
   },
   "tabBar": {

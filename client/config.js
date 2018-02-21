@@ -25,6 +25,8 @@ var config = {
 
         getFoodListUrl: `${host}/weapp/getFoodList`,
 
+        getFoodList0Url: `${host}/weapp/getFoodList0`,
+
         getShopInfoUrl: `${host}/weapp/getShopInfo`,
 
         newOrderUrl: `${host}/weapp/newOrder`,
@@ -42,6 +44,8 @@ var config = {
         getMyOrderUrl: `${host}/weapp/getMyOrder`,
 
         changeSellUrl: `${host}/weapp/changeSell`,
+
+        changeShopStatusUrl: `${host}/weapp/changeShopStatus`,
 
     }
 };

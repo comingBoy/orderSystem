@@ -2,12 +2,15 @@
 var food = require('../../utils/food.js')
 var foodType = require('../../utils/foodType.js')
 var util = require('../../utils/util.js')
+var shop = require('../../utils/shop.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    shopInfo: '',
+    shopStatus: ["点击开店","点击打烊"],
     chooseFoodInfo: null,
     foodListIndex: null,
     foodIndex: null,
@@ -18,7 +21,6 @@ Page({
     addressName: "绿地缤纷城店",
     tableNum: 1,
     classChooseId: 0,
-    orderType: "店内点单(堂食)",
     foodList: [],
     shoppingCart: [],
     shoppingCartNum: 0,
@@ -34,7 +36,8 @@ Page({
     var data = {
       shopId: e
     }
-    food.getFoodList(data, function (res) {
+    food.getFoodList0(data, function (res) {
+      console.log(res)
       var foodList = res.foodList
       for (var i = 0; i < foodList.length; i++) {
         for (var j = 0; j < foodList[i].thisTypeFoodList.length; j++) {
@@ -169,11 +172,37 @@ Page({
       url: '../index/index',
     })
   },
+
+  changeShopStatus: function () {
+    var shopId = 1
+    var shopInfo = this.data.shopInfo
+    shopInfo.ifOpen = 1 - this.data.shopInfo.ifOpen
+    this.setData({
+      shopInfo: shopInfo
+    })
+    var data = {
+      shopId: shopId,
+      ifOpen: shopInfo.ifOpen
+    }
+    shop.changeShopStatus(data, function (res) {
+      if(res.status == 1) {
+        util.showModel("提示","操作成功！")
+      } else if(res.status == -1) {
+        util.showModel("提示", "操作失败，请重试！")
+      } else {
+        util.showModel("提示", "请求失败！")
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     var shopId = 1
+    this.setData({
+      ifOpen: getApp().globalData.ifOpen,
+      shopInfo: getApp().globalData.shopInfo
+    })
     wx.showLoading({
       title: '读取中，请稍后',
     })

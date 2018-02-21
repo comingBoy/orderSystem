@@ -26,7 +26,7 @@ Page({
       console.log(res.myOrder)
       if (res.status == 1 && res.myOrder.length >0) {
         that.setData({
-          order: res.myOrder
+          order: res.myOrder.reverse()
         })
       } else if (res.status == 1 && res.myOrder.length == 0) {
         util.showModel("提示","尚无订单")

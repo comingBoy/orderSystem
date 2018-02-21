@@ -1,0 +1,24 @@
+/* pages/welcome/welcome.wxss */
+.background{
+  display: flex;
+  flex-direction: column;
+  background-size: 100% 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.choose{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.image{
+  display: flex;
+  width: 100%;
+}
+
+.text{
+  font-size: 45rpx;
+}

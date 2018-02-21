@@ -6,7 +6,9 @@ App({
    */
   globalData: {
     order: '',
-    userInfo: ''
+    userInfo: '',
+    ifEatHere: '',
+    ifOpen: ''
   },
 
   /**

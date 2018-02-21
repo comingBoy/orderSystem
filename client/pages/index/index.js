@@ -2,12 +2,16 @@
 var food = require('../../utils/food.js')
 var foodType = require('../../utils/foodType.js')
 var util = require('../../utils/util.js')
+var shop = require('../../utils/shop.js')
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    shopInfo: '',
+    ifEatHere: '',
+    shopStatus: ["已关店","营业中"],
     chooseFoodInfo: null,
     foodListIndex: null,
     foodIndex: null,
@@ -17,10 +21,9 @@ Page({
     modifyProperty: true,
     hiddenShoppingCartDetail: true,
     imagesList: [],
-    addressName: "绿地缤纷城店",
     tableNum: 1,
     classChooseId: 0,
-    orderType: "店内点单(堂食)",
+    orderType: ["打包", "堂食"],
     foodList: [],
     shoppingCart: [],
     shoppingCartNum: 0,
@@ -156,9 +159,29 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that = this
+    this.setData({
+      ifEatHere: getApp().globalData.ifEatHere
+    })
     var shopId = 1
     wx.showLoading({
      title: '读取中，请稍后',
+    })
+    var data = {
+      shopId: shopId
+    }
+    shop.getShopInfo(data, function (res) {
+      console.log(res)
+      if(res.status == 1) {
+        getApp().globalData.shopInfo = res.shopInfo[0]
+        that.setData({
+          shopInfo: res.shopInfo[0]
+        })
+      } else if(res.status == -1) {
+        util.showModel("提示","获取店铺信息失败，请重试！")
+      } else {
+        util.showModel("提示","请求失败！")
+      }
     })
     this.refresh(shopId)
   },
@@ -915,7 +938,7 @@ Page({
       cost: this.data.allPrice,
       date: util.getCurrentDateYMD(),
       time: util.getCurrentTimeHM(),
-      ifEatHere: 1,
+      ifEatHere: this.data.ifEatHere,
       ifFinish: 0,
       orderFood: orderFood,
     }

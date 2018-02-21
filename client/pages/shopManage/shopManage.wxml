@@ -3,7 +3,7 @@
 <view class='address'>
   <view class='boxY'>
     <view class='addressName'>
-      {{addressName}}
+      {{shopInfo.shopName}}
     </view>
     <image class='shopmanage' src='../../images/shopmanage.png' mode='aspectFit' bindtap='back'></image>
   </view>
@@ -12,10 +12,11 @@
 <!--点餐界面-->
 <view class='orderBox'>
   <!--点餐类型-->
-  <view class='orderType'>
-    {{orderType}}
+  <view class='shopstatus'>
+    <view class='orderType' bindtap='changeShopStatus'>
+    {{shopStatus[shopInfo.ifOpen]}}
+    </view>
   </view>
-
 
   <!--菜单-->
   <view class='orderList'>

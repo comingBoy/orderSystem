@@ -169,7 +169,7 @@ Page({
 
   back: function(){
     wx.reLaunch({
-      url: '../index/index',
+      url: '../welcome/welcome',
     })
   },
 

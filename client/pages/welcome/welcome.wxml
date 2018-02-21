@@ -1,11 +1,28 @@
 <!--pages/welcome/welcome.wxml-->
 <view class='background' style="background-image: url('http://qcloudtest-1256041440.cn-south.myqcloud.com/1519184417370-H1Y79w5Pf.jpg'); height: {{height}}px">
-  <view class='choose' bindtap='eatHere'>
+  <view class='address'>
+    <view class='boxY'>
+      <view class='addressName'>
+        {{shopInfo.shopName}}
+      </view>
+      <image class='shopmanage' src='../../images/shopmanage.png' mode='aspectFit'></image>
+    </view>
+  </view>
+  <view wx:if='{{!inputCode}}' class='choose' bindtap='eatHere'>
     <image class='image' style="height: {{width*0.3}}px" mode='aspectFit' src='../../images/eatHere.png'></image>
     <text class='text'>堂食</text>
   </view>
-  <view class='choose' bindtap='eatOut'>
+  <view wx:if='{{!inputCode}}' class='choose' bindtap='eatOut'>
     <image class='image' style="height: {{width*0.3}}px" mode='aspectFit' src='../../images/eatOut.png'></image>
     <text class='text'>打包</text>
   </view>
+  <form bindsubmit="formSubmit" wx:if='{{inputCode}}' class='inputCode'>
+    <text class='text'>输入密码</text>
+    <input class='input' name="code"></input>
+    <button formType="submit">确定</button>
+  </form>
+  <view bindtap='tap' id='0' style="position: absolute; top: 0rpx; left: 0rpx; width:15%; height: {{width*0.15}}px"></view>
+  <view bindtap='tap' id='1' style="position: absolute; top: 0rpx; left: {{width-width*0.15}}px; width:15%; height: {{width*0.15}}px"></view>
+  <view bindtap='tap' id='2' style="position: absolute; top: {{height-width*0.15}}px; left: 0rpx; width:15%; height: {{width*0.15}}px"></view>
+  <view bindtap='tap' id='3' style="position: absolute; top: {{height-width*0.15}}px; left: {{width-width*0.15}}px; width:15%; height: {{width*0.15}}px"></view>
 </view>

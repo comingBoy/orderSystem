@@ -1,4 +1,6 @@
 // pages/welcome/welcome.js
+var util = require('../../utils/util.js')
+var shop = require('../../utils/shop.js')
 Page({
 
   /**
@@ -6,7 +8,10 @@ Page({
    */
   data: {
     height: '',
-    width: ''
+    width: '',
+    tapList: [0,0,0,0],
+    inputCode: false,
+    shopInfo: ''
   },
 
   eatHere: function () {
@@ -32,6 +37,35 @@ Page({
       url: '../index/index',
     })
   },
+
+  tap: function (e) {
+    this.data.tapList[e.currentTarget.id] = 1
+    this.toBackend()
+  },
+
+  toBackend: function () {
+    var that = this
+    if (this.data.tapList[0] == 1 && this.data.tapList[1] == 1 && this.data.tapList[2] == 1 && this.data.tapList[3] == 1) {
+      that.setData({
+        inputCode: true,
+        tapList: [0,0,0,0]
+      })
+    } else {
+      that.setData({
+        inputCode: false,
+      })
+    }
+  },
+
+  formSubmit: function(e) {
+    if (e.detail.value.code == "123456") {
+      wx.reLaunch({
+        url: '../unFinishOrder/unFinishOrder',
+      })
+    } else {
+      util.showModel("提示","密码错误！")
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -44,6 +78,26 @@ Page({
           width: res.windowWidth
         })
       }
+    })
+    var shopId = 1
+    var data = {
+      shopId: shopId
+    }
+    wx.showLoading({
+      title: '读取中，请稍后',
+    })
+    shop.getShopInfo(data, function (res) {
+      if (res.status == 1) {
+        getApp().globalData.shopInfo = res.shopInfo[0]
+        that.setData({
+          shopInfo: res.shopInfo[0]
+        })
+      } else if (res.status == -1) {
+        util.showModel("提示", "获取店铺信息失败，请重试！")
+      } else {
+        util.showModel("提示", "请求失败！")
+      }
+      wx.hideLoading()
     })
   },
 

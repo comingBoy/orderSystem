@@ -18,12 +18,6 @@ page {
   line-height:80rpx;
 }
 
-.boxY{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
 .addressName {
   width: 100%;
   background-color: #df6448;
@@ -55,8 +49,8 @@ page {
 
 .shopstatus{
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .orderType {
@@ -119,9 +113,6 @@ page {
   background-color: white;
 }
 
-.food {
-}
-
 .foodImg {
   width: 80rpx;
   height: 80rpx;
@@ -134,7 +125,6 @@ page {
   border-bottom: solid 1rpx #ebebeb;
   width: 100%;
   text-align: center;
-  padding: 23rpx 0;
   padding: 2% 0;
   height: 4%;
 }

@@ -5,7 +5,7 @@
       <view class='addressName'>
         {{shopInfo.shopName}}
       </view>
-      <image class='shopmanage' src='../../images/shopmanage.png' mode='aspectFit'></image>
+      <image class='shopmanage' src='../../images/shopmanage.png' mode='aspectFit' bindtap='shopManage'></image>
     </view>
   </view>
   <view wx:if='{{!inputCode}}' class='choose' bindtap='eatHere'>

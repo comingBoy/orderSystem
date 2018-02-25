@@ -50,6 +50,18 @@ var getCurrentDateYMD = function(){
   return year + '-' +month + '-' + day
 }
 
+var getYesterdayDateYMD = function () {
+  var myDate = new Date()
+  myDate.setTime(myDate.getTime() - 24 * 60 * 60 * 1000);
+  var year = myDate.getFullYear()
+  var month = myDate.getMonth() + 1
+  var day = myDate.getDate()
+  year = year.toString()
+  month = month < 10 ? '0' + month : month.toString()
+  day = day < 10 ? '0' + day : day.toString()
+  return year + '-' + month + '-' + day
+}
+
 var getCurrentTimeHM = function(){
   var myDate = new Date()
   var hours = myDate.getHours() //获取当前小时数(0-23)
@@ -58,4 +70,4 @@ var getCurrentTimeHM = function(){
   min = min < 10 ? '0' + min : min.toString()
   return hours + ':' + min
 }
-module.exports = { formatTime, showBusy, showSuccess, showModel, getCurrentDateYMD, getCurrentTimeHM }
+module.exports = { formatTime, showBusy, showSuccess, showModel, getCurrentDateYMD, getYesterdayDateYMD, getCurrentTimeHM }

@@ -10,6 +10,7 @@
     "pages/paySuccess/paySuccess", 
     "pages/finishOrder/finishOrder",
     "pages/shopManage/shopManage",
+    "pages/analyse/analyse",
     "pages/test/test"
   ],
   "window":{

@@ -44,7 +44,7 @@ module.exports = {
     })
   },
 
-  //获取未完成订单
+  //获取订单
   getOrder: function (data, callback) {
     net.request(data, config.service.getOrderUrl, function (res) {
       callback(res.data)

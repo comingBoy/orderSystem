@@ -66,6 +66,13 @@ Page({
       util.showModel("提示","密码错误！")
     }
   },
+
+  shopManage: function () {
+    wx.reLaunch({
+      url: '../shopManage/shopManage',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */

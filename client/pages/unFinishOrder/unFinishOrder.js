@@ -81,12 +81,10 @@ Page({
       date: util.getCurrentDateYMD(),
       ifFinish: 0
     }
-    util.showBusy('信道连接中...')
 
     var tunnel = this.tunnel = new qcloud.Tunnel(config.service.tunnelUrl)
 
     tunnel.on('connect', () => {
-      util.showSuccess('信道已连接')
       console.log("WebSocket 信道已连接")
       console.log("发送数据...")
       this.tunnel.emit('speak', {
@@ -97,12 +95,10 @@ Page({
 
     tunnel.on('reconnecting', () => {
       console.log('WebSocket 信道正在重连...')
-      util.showBusy('正在重连')
     })
 
     tunnel.on('reconnect', () => {
       console.log('WebSocket 信道重连成功')
-      util.showSuccess('重连成功')
       console.log("发送数据...")
       this.tunnel.emit('speak', {
         data: data
@@ -111,7 +107,6 @@ Page({
     })
 
     tunnel.on('error', error => {
-      util.showModel('信道发生错误', error)
       console.error('信道发生错误：', error)
     })
 

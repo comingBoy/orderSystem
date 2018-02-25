@@ -194,6 +194,12 @@ Page({
       }
     })
   },
+
+  analyse: function () {
+    wx.navigateTo({
+      url: '../analyse/analyse',
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -217,20 +223,6 @@ Page({
     this.setData({
       classChooseId: e.currentTarget.id,
       toClass: toClass
-    })
-  },
-  /**
-   * 预览图片
-   */
-  previewImage: function (e) {
-    var current = e.currentTarget.dataset.src
-
-    wx.previewImage({
-      current: current,
-      urls: this.data.imagesList,
-      success: function (res) { console.log("成功") },
-      fail: function (res) { console.log("失败") },
-      complete: function (res) { },
     })
   },
 
